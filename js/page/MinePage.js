@@ -3,7 +3,8 @@
  **/
 
 import React, {Component} from 'react';
-import {Dimensions, Image, StyleSheet, View, Text} from "react-native";
+import {Dimensions, Image, StyleSheet, View, Text, ImageBackground} from "react-native";
+import styles from "../style/Css";
 
 
 export default class MinePage extends Component {
@@ -17,7 +18,8 @@ export default class MinePage extends Component {
     render() {
 
         return (
-            <View>
+            <View style={styles.mainContainer}>
+
                 <Text>我的</Text>
             </View>
         )
