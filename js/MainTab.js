@@ -1,5 +1,5 @@
 import React from "react";
-import {Image} from "react-native";
+import {Image, View} from "react-native";
 import { TabNavigator } from 'react-navigation'
 
 import HomePage from "./page/HomePage";
@@ -19,12 +19,15 @@ export default MainTab = TabNavigator({
         screen: HomePage,
         navigationOptions:({navigation, screeProps}) => ({
             //设置StackNavigator属性
-            header:null,
-            headerTitle: '首页',
+            // header:null,
+            //标题
+            drawerLabel: '地址簿',
+            //标题
+            title: "地址簿",
+            drawerLockMode:'locked-closed',
             headerStyle: styles.navigator,
             headerTitleStyle: styles.navigatorTitle,
             gesturesEnabled:true,
-
             //这里设置Tabbar不同页面可能会不同的属性
             tabBarVisible: true,
             tabBarLabel:'首页',
@@ -44,7 +47,7 @@ export default MainTab = TabNavigator({
             //这里设置StackNavigator属性和一般情况下Tabbar不同页面可能会不同的属性
 
             //设置StackNavigator属性
-            header:null,
+            // header:null,
             headerTitle: '我的',
             headerStyle:styles.navigator,
             headerTitleStyle:styles.navigatorTitle,

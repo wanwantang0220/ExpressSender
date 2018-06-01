@@ -18,11 +18,13 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     navigatorTitle:{
-        fontSize:17,
-        color:'white',
+        fontSize:20,
+        color:'#333333',
+        flex: 1,
+        textAlign: "center"
     },
     navigator:{
-        backgroundColor:'#d81e06',
+        backgroundColor:'#EEEEEE',
     },
     tabbarImage:{
         width:25,
@@ -67,6 +69,39 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         textAlign:'center',
+    },
+    mine_view_header:{
+        flexDirection:'row',
+        width:deviceWidth,
+        height:70,
+        backgroundColor:White,
+        justifyContent: 'center',
+    },
+    mine_header:{
+        flex:1,
+        width:50,
+        height:50,
+        marginTop:10,
+        marginLeft:20,
+    },
+    mine_header_text:{
+        flex:3,
+        fontSize:16,
+        height:50,
+        color:BlackColor,
+        textAlign:'left',
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    mine_header_text_right:{
+        flex:1,
+        fontSize:12,
+        height:50,
+        color:BlackColor,
+        textAlign:'center',
+        justifyContent:'center',
+        alignItems:'center'
     }
+
 });
 export default styles;

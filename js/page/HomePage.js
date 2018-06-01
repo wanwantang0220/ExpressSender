@@ -6,7 +6,6 @@ import React, {Component} from 'react';
 import {Image, ImageBackground, StatusBar, Text, View} from "react-native";
 import styles from "../style/Css";
 import NaviBarView from "../component/NaviBarView";
-import {deviceWidth} from "../util/ScreenUtil";
 
 const BG = require("../../img/bc.png");
 const BG_SENDER = require("../../img/group2.png");
@@ -17,7 +16,7 @@ export default class HomePage extends Component {
 
     static navigationOptions = {
         //设置StackNavigator属性
-        header:null,
+        // header:null,
     };
 
     render() {
@@ -27,8 +26,7 @@ export default class HomePage extends Component {
                 <StatusBar
                     animated={true}
                     backgroundColor="black"
-                    barStyle='light-content'
-                />
+                    barStyle='light-content'/>
                 <NaviBarView backgroundColor="black"/>
 
 <View style={{flex:1}}>
