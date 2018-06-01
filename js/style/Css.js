@@ -1,11 +1,11 @@
 import {deviceWidth} from "../util/ScreenUtil";
 import {StyleSheet} from "react-native";
-import {BlackColor, GrayColor, White} from "./BaseStyle";
+import {BlackColor, ColorLine, GrayColor, White} from "./BaseStyle";
 
 const styles = StyleSheet.create({
     mainContainer: {
         flex: 1,
-        backgroundColor: '#F5FCFF',
+        backgroundColor: White,
     },
     welcome: {
         fontSize: 20,
@@ -101,6 +101,54 @@ const styles = StyleSheet.create({
         textAlign:'center',
         justifyContent:'center',
         alignItems:'center'
+    },
+    mine_item:{
+        width:deviceWidth,
+        height:50,
+        flexDirection:'row',
+        backgroundColor:White,
+        alignItems: 'center',
+    },
+    mine_item_left:{
+        flex:5,
+        flexDirection:'row',
+        marginStart:20
+    },
+    mine_item_logo:{
+        width:20,
+        height:20,
+        paddingStart:20
+    },
+    mine_item_text:{
+        textAlign:'left',
+        fontSize:14,
+        color:BlackColor,
+        marginStart:10,
+    },
+    mine_item_arrow:{
+        flex:1,
+        width:20,
+        height:20,
+    },
+    mine_item_text_right:{
+        flex:1,
+        textAlign:'right',
+    },
+    view_line_full:{
+        backgroundColor:ColorLine,
+        height:1,
+        width:deviceWidth,
+    },
+    view_line:{
+        backgroundColor:ColorLine,
+        height:1,
+        width:deviceWidth-40,
+        marginStart:20,
+        marginEnd:20
+    },
+    lineargradient:{
+        width:deviceWidth,
+        height:20
     }
 
 });
