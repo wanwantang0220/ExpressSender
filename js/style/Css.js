@@ -30,8 +30,7 @@ const styles = StyleSheet.create({
         marginBottom:-3,
     },
     image_background:{
-        width:deviceWidth,
-        height:250,
+        flex:5,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -47,11 +46,11 @@ const styles = StyleSheet.create({
         marginBottom:5
     },
     home_image_sender_record:{
-        flex:1,
+        flex:4,
         width:150,
-        height:50,
+        height:100,
         justifyContent: 'center',
-        marginTop:10
+        marginStart:100
     },
     home_tvsender:{
         marginTop:5
@@ -61,6 +60,13 @@ const styles = StyleSheet.create({
         height:1,
         marginTop:1,
         backgroundColor:BlackColor
+    },
+    home_text:{
+        flex:0.5,
+        width:deviceWidth,
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign:'center',
     }
 });
 export default styles;

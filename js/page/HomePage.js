@@ -31,7 +31,7 @@ export default class HomePage extends Component {
                 />
                 <NaviBarView backgroundColor="black"/>
 
-                <View style={{flex:1,width:deviceWidth}}>
+<View style={{flex:1}}>
 
                 <ImageBackground style={[styles.image_background]} source={BG} resizeMode={Image.resizeMode.stretch} >
                     <ImageBackground style={[styles.image_background_sender]} source={BG_SENDER}
@@ -42,11 +42,11 @@ export default class HomePage extends Component {
                         <Text style={[styles.home_tvsender]}>发快递</Text>
                     </ImageBackground>
                 </ImageBackground>
-
                 <ImageBackground style={[styles.home_image_sender_record]}
                           source={BG_SENDER_RECORD} resizeMode={Image.resizeMode.contain}>
                 </ImageBackground>
-                </View>
+                <Text style={[styles.home_text]}>您还未实名认证,立即认证>>></Text>
+</View>
             </View>
         )
     }
