@@ -25,7 +25,7 @@ export default class HomePage extends Component {
         tabBarIcon:(({tintColor,focused}) => {
             return(
                 <Image
-                    source={focused ? require("../../img/i_home_foc.png") :require("../../img/i_home_foc.png")}
+                    source={focused ? MainTabSelectedIcon : MainTabUnSelectedIcon}
                     style={styles.tabbarImage}
                 />
             )
