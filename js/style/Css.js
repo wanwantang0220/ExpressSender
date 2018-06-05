@@ -7,6 +7,9 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: MainBg,
     },
+    container:{
+        flex: 1,
+    },
     welcome: {
         fontSize: 20,
         textAlign: 'center',
@@ -162,6 +165,12 @@ const styles = StyleSheet.create({
         backgroundColor:'#ffffff',
         justifyContent: 'center',
         alignItems:'center'
+    },
+    setting_content:{
+        width:deviceWidth,
+        height:50,
+        flexDirection:'row',
+        backgroundColor:'#ffffff'
     }
 
 });
