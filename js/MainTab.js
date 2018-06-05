@@ -1,5 +1,5 @@
 import React from "react";
-import {Image, View} from "react-native";
+import {Image, View,YellowBox} from "react-native";
 import { TabNavigator } from 'react-navigation'
 
 import HomePage from "./page/HomePage";
@@ -12,6 +12,7 @@ const MainTabSelectedIcon = require("../img/i_home_foc.png");
 const MainTabUnSelectedIcon = require("../img/i_home.png");
 const MineTabUnSelectedIcon = require("../img/i_mine.png");
 const MineTabSelectedIcon = require("../img/i_mine_foc.png");
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
 
 export default MainTab = TabNavigator({
 

@@ -29,7 +29,7 @@ export default class HomePage extends Component {
                     barStyle='light-content'/>
                 <NaviBarView backgroundColor="black"/>
 
-<View style={{flex:1}}>
+                <View style={{flex:1}}>
 
                 <ImageBackground style={[styles.image_background]} source={BG} resizeMode={Image.resizeMode.stretch} >
                     <ImageBackground style={[styles.image_background_sender]} source={BG_SENDER}

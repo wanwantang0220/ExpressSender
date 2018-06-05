@@ -3,7 +3,7 @@
  **/
 
 import React, {Component} from 'react';
-import {Dimensions, Image, StyleSheet, View, Text, ImageBackground} from "react-native";
+import {Image, Text, View} from "react-native";
 import styles from "../style/Css";
 import MineItem from "../component/MineItem";
 import LinearGradient from "react-native-linear-gradient";
@@ -32,19 +32,20 @@ export default class MinePage extends Component {
                 <View style={[styles.mine_view_header]}>
                     <Image style={[styles.mine_header]} source={HEADER} resizeMode={Image.resizeMode.contain}/>
                     <Text style={[styles.mine_header_text]}>注册/登录</Text>
+                    <Text style={[styles.mine_header_text]}>认证</Text>
                 </View>
 
                 <LinearGradient colors={[ BackgroundColorLight, White]} style={styles.lineargradient} />
-                <View style={{backgroundColor:White}}>
-                <View style={[styles.view_line_full]}/>
-               <MineItem  logo={MINE_EXPRESS} style='express' content="我的快递" onPress={()=>{}}/>
-                <View style={[styles.view_line]}/>
-                <MineItem  logo={MINE_ADDRESS} style='express' content="地址簿" onPress={()=>{}}/>
-                <View style={[styles.view_line]}/>
-                <MineItem  logo={MINE_CARD} style='express' content="优惠券" onPress={()=>{}}/>
-                <View style={[styles.view_line]}/>
-                <MineItem  logo={MINE_SETTING} style='express' content="设置" onPress={()=>{}}/>
-                <View style={[styles.view_line_full]}/>
+                <View style={[styles.mine_view_content]}>
+                     <View style={[styles.view_line_full]}/>
+                    <MineItem  logo={MINE_EXPRESS}  content="我的快递" onPress={()=>this.props.navigation.navigate('ExpressList')}/>
+                    <View style={[styles.view_line]}/>
+                    <MineItem  logo={MINE_ADDRESS}  content="地址簿" onPress={()=>this.props.navigation.navigate('AddressList')}/>
+                    <View style={[styles.view_line]}/>
+                    <MineItem  logo={MINE_CARD}  content="优惠券" onPress={()=>this.props.navigation.navigate('CouponList')}/>
+                    <View style={[styles.view_line]}/>
+                    <MineItem  logo={MINE_SETTING}  content="设置" onPress={()=>this.props.navigation.navigate('Settings')}/>
+                    <View style={[styles.view_line_full]}/>
                 </View>
             </View>
         )

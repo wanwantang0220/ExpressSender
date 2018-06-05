@@ -6,6 +6,10 @@
 import MainTab from "./MainTab";
 import HomePage from "./page/HomePage";
 import MinePage from "./page/MinePage";
+import AddressListPage from "./page/AddressListPage";
+import ExpressListPage from "./page/ExpressListPage";
+import CouponListPage from "./page/CouponListPage";
+import SettingPage from "./page/SettingPage";
 
 const RouteConfig = {
     MainTab: {
@@ -20,6 +24,18 @@ const RouteConfig = {
         screen: MinePage,
         // navigationOptions: ({navigation}) => ({header:null, gesturesEnable:true})
     },
+    AddressList:{
+        screen:AddressListPage,
+    },
+    ExpressList:{
+        screen:ExpressListPage,
+    },
+    CouponList:{
+        screen:CouponListPage
+    },
+    Settings:{
+        screen:SettingPage
+    }
 };
 
 export default RouteConfig;

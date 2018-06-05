@@ -1,11 +1,11 @@
 import {deviceWidth} from "../util/ScreenUtil";
 import {StyleSheet} from "react-native";
-import {BlackColor, ColorLine, GrayColor, White} from "./BaseStyle";
+import {BlackColor, ColorLine, GrayColor, MainBg, ThemeColor, White} from "./BaseStyle";
 
 const styles = StyleSheet.create({
     mainContainer: {
         flex: 1,
-        backgroundColor: White,
+        backgroundColor: MainBg,
     },
     welcome: {
         fontSize: 20,
@@ -75,13 +75,12 @@ const styles = StyleSheet.create({
         width:deviceWidth,
         height:70,
         backgroundColor:White,
-        justifyContent: 'center',
     },
     mine_header:{
         flex:1,
         width:50,
         height:50,
-        marginTop:10,
+        marginTop:5,
         marginLeft:20,
     },
     mine_header_text:{
@@ -90,8 +89,16 @@ const styles = StyleSheet.create({
         height:50,
         color:BlackColor,
         textAlign:'left',
-        justifyContent:'center',
-        alignItems:'center'
+        marginTop:25,
+        marginStart:15
+    },
+    mine_header_right:{
+        flex:1,
+        fontSize:16,
+        height:50,
+        color:BlackColor,
+        marginTop:25,
+        marginStart:15
     },
     mine_header_text_right:{
         flex:1,
@@ -106,7 +113,6 @@ const styles = StyleSheet.create({
         width:deviceWidth,
         height:50,
         flexDirection:'row',
-        backgroundColor:White,
         alignItems: 'center',
     },
     mine_item_left:{
@@ -140,15 +146,22 @@ const styles = StyleSheet.create({
         width:deviceWidth,
     },
     view_line:{
-        backgroundColor:ColorLine,
         height:1,
         width:deviceWidth-40,
         marginStart:20,
-        marginEnd:20
+        marginEnd:20,
+        backgroundColor:ColorLine,
     },
     lineargradient:{
         width:deviceWidth,
-        height:20
+        height:10
+    },
+    mine_view_content:{
+        width:deviceWidth,
+        height:210,
+        backgroundColor:'#ffffff',
+        justifyContent: 'center',
+        alignItems:'center'
     }
 
 });

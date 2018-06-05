@@ -3,9 +3,10 @@
  **/
 
 import React, {PureComponent} from 'react';
-import {Image, Text, View} from "react-native";
+import {Image, Text, TouchableOpacity, View} from "react-native";
 import PropTypes from 'prop-types';
 import styles from "../style/Css";
+import {White} from "../style/BaseStyle";
 
 const MINE_EXPRESS = require("../../img/icon_express.png");
 const MINE_ADDRESS = require("../../img/icon_place.png");
@@ -25,7 +26,6 @@ export default class MineItem extends PureComponent {
 
     static propTypes={
         logo:PropTypes.number,
-        style:PropTypes.string,
         content:PropTypes.string,
         onPress:PropTypes.func
     };
@@ -37,13 +37,17 @@ export default class MineItem extends PureComponent {
 
         const {logo,content,onPress }=this.props;
         return (
-            <View style={[styles.mine_item]}>
+            <TouchableOpacity
+                style={[styles.mine_item]}
+                              activeOpacity={0.85}
+                              underlayColor='white'
+            onPress={onPress}>
                 <View style={[styles.mine_item_left]}>
                     <Image style={[styles.mine_item_logo]} source={logo} resizeMode={Image.resizeMode.contain}/>
                     <Text style={[styles.mine_item_text]}>{content}</Text>
                 </View>
                 <Image style={[styles.mine_item_arrow]} source={MINE_ARROW} resizeMode={Image.resizeMode.contain}/>
-            </View>
+            </TouchableOpacity>
         )
     }
 
