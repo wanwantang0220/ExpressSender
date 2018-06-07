@@ -9,6 +9,8 @@ import {BlackTextColor, White} from "../style/BaseStyle";
 import AddressReceiverPage from "./AddressReceiverPage";
 import AddressSenderPage from "./AddressSenderPage";
 import styles from "../style/Css";
+import ExpressSignPage from "./ExpressSignPage";
+import ExpressCollectPage from "./ExpressCollectPage";
 
 
 export default class ExpressListPage extends PureComponent {
@@ -50,8 +52,8 @@ export default class ExpressListPage extends PureComponent {
                             tabStyle={{height: 39}}
                             underlineHeight={2}/>}>
 
-                    <AddressReceiverPage tabLabel="    收件    " navigator={navigator}/>
-                    <AddressSenderPage tabLabel="    发件    " navigator={navigator}/>
+                    <ExpressCollectPage   tabLabel="    待揽收    " navigator={navigator}/>
+                    <ExpressSignPage      tabLabel="    待签收    " navigator={navigator}/>
                 </ScrollableTabView>
 
             </View>
