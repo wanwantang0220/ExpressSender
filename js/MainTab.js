@@ -22,9 +22,9 @@ export default MainTab = TabNavigator({
             //设置StackNavigator属性
             // header:null,
             //标题
-            drawerLabel: '地址簿',
+            drawerLabel: '首页',
             //标题
-            title: "地址簿",
+            title: "首页",
             drawerLockMode:'locked-closed',
             headerStyle: styles.navigator,
             headerTitleStyle: styles.navigatorTitle,

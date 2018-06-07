@@ -29,6 +29,7 @@ const Secondary_Text_Color ='#757575';
 const Divider_Color ='#BDBDBD';
 const Background ='#F5FCFF';
 const ColorLine='#E5E5E5';
+const ColorLineRed='#E83F57';
 
 
 
@@ -54,6 +55,6 @@ export {
     MainBg, GrayColor, GrayBlackColor, Translucent, White, BlackColor, GrayWhiteColor, MikeWhiteColor, BlackTextColor,
     WhiteTextColor, BaseStyles, ThemeColor, SeparatorColor, BackgroundColor, BackgroundColorLight, ColorTextGrey,
     ColorStart, ColorEnd, Dark_Primary_Color, Default_Primary_Color,Light_Primary_Color,Text_Primary_Color,
-    Accent_Color,Primary_Text_Color,Secondary_Text_Color,Divider_Color,Background,ColorRed,ColorLine
+    Accent_Color,Primary_Text_Color,Secondary_Text_Color,Divider_Color,Background,ColorRed,ColorLine,ColorLineRed
 
 }

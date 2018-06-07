@@ -4,6 +4,8 @@
 
 import React, {PureComponent} from 'react';
 import {Dimensions, Image, StyleSheet, View, Text} from "react-native";
+import AddressItemEditCell from "../component/AddressItemEditCell";
+import styles from "../style/Css";
 
 
 export default class AddressSenderPage extends PureComponent {
@@ -29,8 +31,8 @@ export default class AddressSenderPage extends PureComponent {
     render() {
 
         return (
-            <View>
-                <Text>设置</Text>
+            <View style={[styles.mainContainer]}>
+                <AddressItemEditCell />
             </View>
         )
     }

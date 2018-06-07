@@ -1,6 +1,6 @@
 import {deviceWidth} from "../util/ScreenUtil";
-import {StyleSheet} from "react-native";
-import {BlackColor, ColorLine, GrayColor, MainBg, ThemeColor, White} from "./BaseStyle";
+import {StyleSheet,PixelRatio} from "react-native";
+import {BlackColor, ColorLine, ColorLineRed, Divider_Color, GrayColor, MainBg, ThemeColor, White} from "./BaseStyle";
 
 const styles = StyleSheet.create({
     mainContainer: {
@@ -9,6 +9,8 @@ const styles = StyleSheet.create({
     },
     container:{
         flex: 1,
+        flexDirection:'column',
+        backgroundColor:MainBg
     },
     welcome: {
         fontSize: 20,
@@ -171,7 +173,158 @@ const styles = StyleSheet.create({
         height:50,
         flexDirection:'row',
         backgroundColor:'#ffffff'
+    },
+    setting_left:{
+        height:50,
+        flex:4,
+        justifyContent: 'center',
+        textAlign:'left',
+        textAlignVertical:'center',
+        marginStart:20
+    },
+    setting_right:{
+        height:50,
+        flex:1,
+        justifyContent: 'center',
+        textAlign:'right',
+        marginEnd:5,
+        textAlignVertical:'center'
+    },
+    setting_right_arrow:{
+        width:20,
+        height:20,
+        flex:0.5,
+        justifyContent: 'center',
+        marginTop:15
+    },
+    login_view:{
+      width:deviceWidth,
+      marginStart:20,
+      marginEnd:20,
+      marginTop:40,
+      marginBottom:20
+    },
+    login_text:{
+        width:170,
+        fontSize:36,
+        fontFamily: 'Verdana bold',
+        fontWeight: 'bold',
+        color:BlackColor
+    },
+    login_input:{
+        width:deviceWidth-40,
+        fontSize:14,
+        marginRight:20,
+        marginTop:30
+
+    },
+    login_second_view:{
+        width:deviceWidth-40,
+        marginRight:20,
+        marginTop:30
+    },
+    unpress_login_btn:{
+        width:deviceWidth-40,
+        height:48,
+        marginStart:20,
+        marginEnd:20,
+        marginLeft:20,
+        marginRight:20,
+        backgroundColor: Divider_Color,
+        borderColor: Divider_Color,
+        justifyContent: 'center',
+        borderRadius: 30,
+        borderStyle: 'solid',
+        alignItems:'center',
+        borderLeftWidth: 1 / PixelRatio.get(),
+        borderRightWidth: 1 / PixelRatio.get(),
+        borderBottomWidth: 1 / PixelRatio.get(),
+        borderTopWidth: 1 / PixelRatio.get(),
+    },
+    onpress_login_btn:{
+        width:deviceWidth-40,
+        height:48,
+        marginStart:20,
+        marginEnd:20,
+        marginLeft:20,
+        marginRight:20,
+        backgroundColor: ColorLineRed,
+        borderColor: ColorLineRed,
+        borderWidth:0,
+        justifyContent: 'center',
+        borderRadius: 30,
+        borderStyle: 'solid',
+        alignItems:'center',
+        borderLeftWidth: 1 / PixelRatio.get(),
+        borderRightWidth: 1 / PixelRatio.get(),
+        borderBottomWidth: 1 / PixelRatio.get(),
+        borderTopWidth: 1 / PixelRatio.get(),
+    },
+    unpress_login_btn_text:{
+        fontSize:14,
+        color:White
+    },
+    login_xieyi:{
+        fontSize:10,
+        color:GrayColor,
+        marginTop:20,
+        justifyContent: 'center',
+        textAlign:'center'
+    },
+    login_second_text:{
+        fontSize:14,
+        color:BlackColor,
+        flex:1
+    },
+    login_second_time:{
+        fontSize:14,
+        color:GrayColor,
+        flex:1,
+        textAlign:'left'
+    },
+    address_item_view:{
+        width:deviceWidth,
+        height:30,
+        marginStart:10,
+        marginEnd:10,
+        marginTop:10,
+        flexDirection:'row'
+    },
+    address_item_text1:{
+        flex:1,
+        fontSize:14,
+        color:BlackColor
+    },
+    address_item_text2:{
+        flex:1,
+        fontSize:14,
+        color:BlackColor
+    },
+    address_item_text3:{
+        fontSize:12,
+        color:GrayColor
+    },
+    address_item_view2:{
+        marginStart:10,
+        marginEnd:10,
+        marginBottom:10
+    },
+    item_line:{
+        width:deviceWidth,
+        height:10,
+        backgroundColor:MainBg
+    },
+    address_item_view3:{
+        flexDirection:'row',
+        justifyContent: 'flex-end',
+        marginBottom:10,
+        marginTop:10,
+        marginEnd:10
+    },
+    address_item_view3_text: {
+        width: 70, flexDirection: 'row'
     }
+
 
 });
 export default styles;

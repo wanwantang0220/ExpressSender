@@ -3,9 +3,10 @@
  **/
 
 import React, {PureComponent} from 'react';
-import {Dimensions, Image, StyleSheet, View, Text} from "react-native";
+import {Image, StyleSheet, View, Text, TouchableHighlight} from "react-native";
 import styles from "../style/Css";
 
+const SETTING_ARROW = require('../../img/icon_arrow.png');
 
 export default class SettingPage extends PureComponent {
 
@@ -35,17 +36,35 @@ export default class SettingPage extends PureComponent {
 
     render() {
 
+
         return (
             <View style={[styles.container]}>
 
-                <View style={[styles.view_line_full,{marginTop:10}]}/>
+                <View style={{flex:4}}>
+                    <View style={[styles.view_line_full,{marginTop:10}]}/>
+                    <TouchableHighlight
+                        activeOpacity={0.7}
+                        underlayColor='green'
+                        onHideUnderlay={()=>{}}
+                        onShowUnderlay={()=>{}}
+                        onPress={()=>{this.props.navigation.navigate('Login')}}>
 
-                <View style={[styles.setting_content]}>
+                        <View style={[styles.setting_content]}>
 
-                    <Text>实名认证</Text>
-                    <Text>认证</Text>
+                            <Text style={styles.setting_left}>实名认证</Text>
+                            <Text style={styles.setting_right}>认证</Text>
+                            <Image style={styles.setting_right_arrow} source={SETTING_ARROW} resizeMode={Image.resizeMode.contain}/>
+
+                        </View>
+
+                    </TouchableHighlight>
+                    <View style={[styles.view_line_full]}/>
                 </View>
-                <Text>设置</Text>
+                <View style={{flex: 1}}>
+                    <View style={[styles.onpress_login_btn,{justifyContent:'center'}]}>
+                        <Text style={[styles.unpress_login_btn_text]}>退出登录</Text>
+                    </View>
+                </View>
             </View>
         )
     }

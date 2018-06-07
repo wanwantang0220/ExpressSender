@@ -10,6 +10,8 @@ import AddressListPage from "./page/AddressListPage";
 import ExpressListPage from "./page/ExpressListPage";
 import CouponListPage from "./page/CouponListPage";
 import SettingPage from "./page/SettingPage";
+import LoginPage from "./page/LoginPage";
+import LoginSecondPage from "./page/LoginSecondPage";
 
 const RouteConfig = {
     MainTab: {
@@ -35,6 +37,14 @@ const RouteConfig = {
     },
     Settings:{
         screen:SettingPage
+    },
+    Login:{
+        screen:LoginPage,
+        // navigationOptions: ({navigation}) => ({header: null, gesturesEnable: true})
+
+    },
+    LoginSecond:{
+        screen:LoginSecondPage
     }
 };
 

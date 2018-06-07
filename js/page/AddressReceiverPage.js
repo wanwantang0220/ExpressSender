@@ -30,7 +30,7 @@ export default class AddressReceiverPage extends PureComponent {
     }
 
     componentDidMount() {
-        this.listView.beginHeaderRefresh();
+        // this.listView.beginHeaderRefresh();
     }
 
     render() {
@@ -38,24 +38,26 @@ export default class AddressReceiverPage extends PureComponent {
         return (
             <View style={[styles.mainContainer]}>
 
-                <RefreshListView
-                    ref={(ref) => {
-                        this.listView = ref
-                    }}
-                    colors={['red', '#ffd500', '#0080ff', '#99e600']}
-                    data={this.state.mData}
-                    renderItem={this.renderItem}
-                    keyExtractor={(item) => {
-                        return item._id || item.uuid;
-                    }}
-                    ListEmptyComponent={this.renderEmptyView}
-                    onHeaderRefresh={() => {
-                        this.requestRefreshData(true, false)
-                    }}
-                    onFooterRefresh={() => {
-                        this.requestRefreshData(false, true)
-                    }}>
-                </RefreshListView>
+                <AddressItemCell />
+                <AddressItemCell />
+                {/*<RefreshListView*/}
+                    {/*ref={(ref) => {*/}
+                        {/*this.listView = ref*/}
+                    {/*}}*/}
+                    {/*colors={['red', '#ffd500', '#0080ff', '#99e600']}*/}
+                    {/*data={this.state.mData}*/}
+                    {/*renderItem={this.renderItem}*/}
+                    {/*keyExtractor={(item) => {*/}
+                        {/*return item._id || item.uuid;*/}
+                    {/*}}*/}
+                    {/*ListEmptyComponent={this.renderEmptyView}*/}
+                    {/*onHeaderRefresh={() => {*/}
+                        {/*this.requestRefreshData(true, false)*/}
+                    {/*}}*/}
+                    {/*onFooterRefresh={() => {*/}
+                        {/*this.requestRefreshData(false, true)*/}
+                    {/*}}>*/}
+                {/*</RefreshListView>*/}
             </View>
         )
     }
