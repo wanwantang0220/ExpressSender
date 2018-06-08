@@ -8,6 +8,8 @@ import HttpManager from "../data/http/HttpManager";
 import styles from "../style/Css";
 import AddressItemCell from "../component/AddressItemCell";
 import RefreshListView from "../component/refresh/RefreshListView";
+import AddressContent from "../component/AddressContentEmpty";
+import AddressItemEditCell from "../component/AddressItemEditCell";
 
 
 export default class AddressReceiverPage extends PureComponent {
@@ -24,6 +26,7 @@ export default class AddressReceiverPage extends PureComponent {
             mData: [],
             startPage: 1,   // 从第几页开始加载
             pageSize: 6,   // 每页加载多少条数据
+            isEmpty:true,
         };
         this.httpManager = new HttpManager();
 
@@ -35,11 +38,12 @@ export default class AddressReceiverPage extends PureComponent {
 
     render() {
 
+        const flag = this.state.isEmpty?<AddressContent/>:<AddressItemCell/>;
+
         return (
             <View style={[styles.mainContainer]}>
 
-                <AddressItemCell />
-                <AddressItemCell />
+                {flag}
                 {/*<RefreshListView*/}
                     {/*ref={(ref) => {*/}
                         {/*this.listView = ref*/}

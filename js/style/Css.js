@@ -322,8 +322,42 @@ const styles = StyleSheet.create({
         marginEnd:10
     },
     address_item_view3_text: {
-        width: 70, flexDirection: 'row'
+        width: 70,
+        flexDirection: 'row'
+    },
+    address_content_pic:{
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    address_content_text:{
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    address_content_button_view:{
+        justifyContent:'center',
+        alignItems:'center',
+        borderBottomWidth:1,
+        borderColor:ColorLineRed,
+        borderRadius:20
+    },
+    address_content_button:{
+        fontSize:ColorLineRed,
+        fontSize:14
+    },
+    coupon_empty_view:{
+        alignItems:'center',
+        marginTop:50
+    },
+    lineOne:{
+        width:0,
+        height:40,
+        borderWidth:0.8,
+        borderColor:'red',
+        borderStyle:'dashed',
+        borderRadius:0.1,
     }
+
+
 
 
 });
