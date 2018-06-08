@@ -36,7 +36,7 @@ export default  class ExpressItemCell extends PureComponent{
                             <Text>测试</Text>
                         </View>
                     </View>
-                    <View>
+                    <View style={{alignItems:'center',justifyContent:'center'}}>
                         <Text>下单时间:</Text>
                         <Text>2018-06-01 16:58:58</Text>
                     </View>
