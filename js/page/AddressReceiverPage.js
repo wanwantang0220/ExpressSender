@@ -1,7 +1,6 @@
 /**
  * 设置
  **/
-
 import React, {PureComponent} from 'react';
 import {Dimensions, Image, StyleSheet, View, Text} from "react-native";
 import HttpManager from "../data/http/HttpManager";
@@ -19,6 +18,9 @@ export default class AddressReceiverPage extends PureComponent {
         drawerLabel: '设置',
     };
 
+
+    static propTypes={
+    };
 
     constructor(props) {
         super(props);
@@ -38,12 +40,19 @@ export default class AddressReceiverPage extends PureComponent {
 
     render() {
 
-        const flag = this.state.isEmpty?<AddressContent/>:<AddressItemCell/>;
+        const navigator = this.props.navigator;
+        const flag = this.state.isEmpty?<AddressContent
+                onAddAddress={()=>{navigator.navigate('AddressAdd')} }/>
+            :<AddressItemCell/>;
 
         return (
             <View style={[styles.mainContainer]}>
 
-                {flag}
+                <View style={{marginTop:100,  justifyContent:'center',
+                    alignItems:'center',}}>
+                    {flag}
+                </View>
+
                 {/*<RefreshListView*/}
                     {/*ref={(ref) => {*/}
                         {/*this.listView = ref*/}

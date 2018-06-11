@@ -326,23 +326,38 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     address_content_pic:{
-        justifyContent:'center',
-        alignItems:'center'
+        width:120,
+        height:120,
     },
     address_content_text:{
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        marginTop:10,
     },
     address_content_button_view:{
-        justifyContent:'center',
         alignItems:'center',
-        borderBottomWidth:1,
-        borderColor:ColorLineRed,
-        borderRadius:20
+        marginStart:20,
+        borderRadius:20,
+        paddingStart:10,
+        paddingEnd:10,
+        paddingTop:5,
+        paddingBottom:5,
+        width:100,
+        marginTop:20,
+        backgroundColor: '#00000000',
+        borderColor: ColorLineRed,
+        borderWidth:0,
+        justifyContent: 'center',
+        borderStyle: 'solid',
+        borderLeftWidth: 1 / PixelRatio.get(),
+        borderRightWidth: 1 / PixelRatio.get(),
+        borderBottomWidth: 1 / PixelRatio.get(),
+        borderTopWidth: 1 / PixelRatio.get(),
     },
     address_content_button:{
         fontSize:ColorLineRed,
-        fontSize:14
+        fontSize:14,
+        color:ColorLineRed,
     },
     coupon_empty_view:{
         alignItems:'center',
@@ -355,6 +370,44 @@ const styles = StyleSheet.create({
         borderColor:'red',
         borderStyle:'dashed',
         borderRadius:0.1,
+    },
+    add_address_view1:{
+        flex:1,
+        flexDirection:'row',
+        width:deviceWidth,
+        height:55,
+    },
+    add_address_text:{
+        flex:1,
+        alignItems:'center',
+        textAlign:'center',
+        textAlignVertical:'center'
+    },
+    add_address_textinput:{
+        flex:2.5,
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    add_address_text_btn:{
+        marginStart:10,
+        borderRadius:20,
+        width:70,
+        height:25,
+        marginTop:6,
+        marginBottom:6,
+        backgroundColor: '#00000000',
+        borderColor: ColorLineRed,
+        borderWidth:0,
+        justifyContent: 'center',
+        borderStyle: 'solid',
+        borderLeftWidth: 1 / PixelRatio.get(),
+        borderRightWidth: 1 / PixelRatio.get(),
+        borderBottomWidth: 1 / PixelRatio.get(),
+        borderTopWidth: 1 / PixelRatio.get(),
+        fontSize:12,
+        color:ColorLineRed,
+        textAlign:'center',
+        textAlignVertical:'center'
     }
 
 

@@ -12,6 +12,9 @@ import CouponListPage from "./page/CouponListPage";
 import SettingPage from "./page/SettingPage";
 import LoginPage from "./page/LoginPage";
 import LoginSecondPage from "./page/LoginSecondPage";
+import AddressAddPage from "./page/AddressAddPage";
+import AddressEditPage from "./page/AddressEditPage";
+import OrderDetailPage from "./page/OrderDetailPage";
 
 const RouteConfig = {
     MainTab: {
@@ -45,6 +48,15 @@ const RouteConfig = {
     },
     LoginSecond:{
         screen:LoginSecondPage
+    },
+    AddressAdd:{
+        screen:AddressAddPage
+    },
+    AddressEdit:{
+        screen:AddressEditPage
+    },
+    OrderDetail:{
+        screen:OrderDetailPage
     }
 };
 
