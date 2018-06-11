@@ -94,7 +94,7 @@ export default class AddressAddPage extends PureComponent {
                         underlineColorAndroid = {'transparent'} />
                     <View style={{justifyContent:'flex-end', flexDirection:'row',marginEnd:20}}>
                         <Text style={[styles.add_address_text_btn]}>清空</Text>
-                        <Text style={[styles.add_address_text_btn]}>智能录入</Text>
+                        <Text style={[styles.add_address_text_btn2]}>智能录入</Text>
                     </View>
                 </View>
                 <View style={{flex:1,marginTop:30}}>

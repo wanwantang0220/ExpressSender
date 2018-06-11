@@ -408,6 +408,27 @@ const styles = StyleSheet.create({
         color:ColorLineRed,
         textAlign:'center',
         textAlignVertical:'center'
+    },
+    add_address_text_btn2:{
+        marginStart:10,
+        borderRadius:20,
+        width:70,
+        height:25,
+        marginTop:6,
+        marginBottom:6,
+        backgroundColor: ColorLineRed,
+        borderColor: ColorLineRed,
+        borderWidth:0,
+        justifyContent: 'center',
+        borderStyle: 'solid',
+        borderLeftWidth: 1 / PixelRatio.get(),
+        borderRightWidth: 1 / PixelRatio.get(),
+        borderBottomWidth: 1 / PixelRatio.get(),
+        borderTopWidth: 1 / PixelRatio.get(),
+        fontSize:12,
+        color:White,
+        textAlign:'center',
+        textAlignVertical:'center'
     }
 
 

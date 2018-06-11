@@ -47,7 +47,7 @@ export default class MinePage extends Component {
                     <MineItem  logo={MINE_SETTING}  content="设置" onPress={()=>this.props.navigation.navigate('Settings')}/>
                     <View style={[styles.view_line_full]}/>
 
-                    <MineItem  logo={MINE_SETTING}  content="测试" onPress={()=>this.props.navigation.navigate('AddressEdit')}/>
+                    <MineItem  logo={MINE_SETTING}  content="测试" onPress={()=>this.props.navigation.navigate('OrderDetail')}/>
                     <View style={[styles.view_line_full]}/>
                     
                     
