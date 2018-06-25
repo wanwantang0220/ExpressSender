@@ -22,5 +22,11 @@ class ExampleReduxApp extends  Component{
     }
 }
 
+/***
+ * 分析:
+ * Provider提供的是一个顶层容器的作用，实现store的上下文传递
+ * Connect组件是局部组件，将某个react组件包装起来，传递指定的state和props给该组件访问。
+ */
+
 
 export default ExampleReduxApp;

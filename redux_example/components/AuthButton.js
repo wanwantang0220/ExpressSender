@@ -17,14 +17,24 @@ AuthButton.propTypes = {
   loginScreen: PropTypes.func.isRequired,
 };
 
+/***
+ * 传入所有state，返回指定的state数据
+ * @param state
+ * @returns {{isLoggedIn: *|boolean}}
+ */
 const mapStateToProps = state => ({
   isLoggedIn: state.auth.isLoggedIn,
 });
 
+
+/***
+ * 传入dispatch，返回使用bindActionCreators()绑定的action方法
+ * @param dispatch
+ * @returns {{logout: function(): *, loginScreen: function(): *}}
+ */
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch({ type: 'Logout' }),
-  loginScreen: () =>
-    dispatch(NavigationActions.navigate({ routeName: 'Login' })),
+  loginScreen: () => dispatch(NavigationActions.navigate({ routeName: 'Login' })),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AuthButton);
