@@ -1,4 +1,5 @@
-import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator'
+import CardStackStyleInterpolator from 'react-navigation/src/views/StackView/StackViewStyleInterpolator';
+
 
 // 默认横向跳转
 // 如果即将要跳转到的页面需要其它跳转方式

@@ -15,6 +15,7 @@ import LoginSecondPage from "./page/LoginSecondPage";
 import AddressAddPage from "./page/AddressAddPage";
 import AddressEditPage from "./page/AddressEditPage";
 import OrderDetailPage from "./page/OrderDetailPage";
+import ReduxIndexPage from "./page/ReduxIndexPage";
 
 const RouteConfig = {
     MainTab: {
@@ -57,6 +58,9 @@ const RouteConfig = {
     },
     OrderDetail:{
         screen:OrderDetailPage
+    },
+    ReduxIndex:{
+        screen:ReduxIndexPage
     }
 };
 

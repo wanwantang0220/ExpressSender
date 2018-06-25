@@ -49,8 +49,9 @@ export default class MinePage extends Component {
 
                     <MineItem  logo={MINE_SETTING}  content="测试" onPress={()=>this.props.navigation.navigate('OrderDetail')}/>
                     <View style={[styles.view_line_full]}/>
-                    
-                    
+
+                    <MineItem  logo={MINE_SETTING}  content="Redux" onPress={()=>this.props.navigation.navigate('ReduxIndex')}/>
+                    <View style={[styles.view_line_full]}/>
                 </View>
             </View>
         )

@@ -163,10 +163,10 @@ const styles = StyleSheet.create({
     },
     mine_view_content:{
         width:deviceWidth,
-        height:210,
+        height:410,
         backgroundColor:'#ffffff',
-        justifyContent: 'center',
-        alignItems:'center'
+        // justifyContent: 'center',
+        // alignItems:'center'
     },
     setting_content:{
         width:deviceWidth,
