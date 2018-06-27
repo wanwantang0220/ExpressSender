@@ -3,10 +3,13 @@
  **/
 
 import React, {PureComponent} from 'react';
-import {Dimensions, Image, StyleSheet, View, Text, TextInput} from "react-native";
+import {Dimensions, Image, StyleSheet, View, Text, TextInput, TouchableHighlight} from "react-native";
 import styles from "../style/Css";
 import {ColorLineRed, GrayColor, White} from "../style/BaseStyle";
 import TimerButton from "../component/TimerButton";
+import HttpManager from "../data/http/HttpManager";
+import {storage} from '../data/storeage/Storage';
+import {RESULT_OK} from "../data/http/ContastURL";
 
 
 const BgUnOnPress = styles.unpress_login_btn;
@@ -25,47 +28,48 @@ export default class LoginSecondPage extends PureComponent {
         headerRight: <View/>
     };
 
-
     constructor(props) {
         super(props);
 
         this.state = {
             phone: '',
-            state: '这里显示状态'
+            vercode: '',
+            timer: -1,
+            state: '成功',
         }
-        this.requestAPI = this.requestAPI.bind(this)
+        this.requestAPI = this.requestAPI.bind(this);
+        this.httpManager = new HttpManager();
     }
 
     componentDidMount() {
 
     }
 
+
     render() {
 
-        const { params } = this.props.navigation.state;
+        const {params} = this.props.navigation.state;
         const phone = params ? params.param : null;
-        const btnBg = this.state.phone === "" ? BgUnOnPress : BgOnPress;
+        const btnBg = this.state.vercode === "" ? BgUnOnPress : BgOnPress;
 
         return (
             <View style={[styles.mainContainer]}>
 
                 <View style={[styles.login_view]}>
                     <Text style={[styles.login_text]}>喜来快递欢迎你</Text>
-                    <View style={[styles.login_second_view,{flexDirection:'row'}]}>
+                    <View style={[styles.login_second_view, {flexDirection: 'row'}]}>
                         <Text style={[styles.login_second_text]}>{phone}</Text>
                         <TimerButton
                             style={styles.login_second_time}
                             enable={phone.length}
                             textStyle={{color: 'blue'}}
-                            timerCount={60}
-                            timerTitle={'获取验证码'}
-                            timerActiveTitle={['请在（','s）后重试']}
-                            onClick={(shouldStartCounting)=>{
+                            timerCount={30}
+                            timerActiveTitle={['请在（', 's）后重试']}
+                            onClick={(shouldStartCounting) => {
                                 // shouldStartCountting是一个回调函数，根据调用接口的情况在适当的时候调用它来决定是否开始倒计时
-                                //随机模拟发送验证码成功或失败
-                                this.requestAPI(shouldStartCounting)
+                                // this.requestAPI(shouldStartCounting)
                             }}
-/>
+                        />
                     </View>
 
                     <TextInput
@@ -73,14 +77,22 @@ export default class LoginSecondPage extends PureComponent {
                         style={[styles.login_input]}
                         keyboardType='numeric'
                         maxLength={11}
-                        value={this.state.phone}
-                        onChangeText={(phone) => this.setState({phone})}
+                        value={this.state.vercode}
+                        onChangeText={(text) => this.setState({vercode: text})}
                         underlineColorAndroid={ColorLineRed}/>
                 </View>
 
-                <View style={btnBg}>
+                <TouchableHighlight
+                    style={btnBg}
+                    activeOpacity={0.7}
+                    underlayColor='green'
+                    onHideUnderlay={() => {
+                    }}
+                    onShowUnderlay={() => {
+                    }}
+                    onPress={this.loginOrReg}>
                     <Text style={[styles.unpress_login_btn_text]}>注册/登录</Text>
-                </View>
+                </TouchableHighlight>
 
                 <Text style={styles.login_xieyi}>注册即表示你已经阅读并同意《用户注册协议》</Text>
 
@@ -89,17 +101,37 @@ export default class LoginSecondPage extends PureComponent {
     }
 
 
-    requestAPI(shouldStartCounting){
+    requestAPI(shouldStartCounting) {
         this.setState({
-            state: '正在请求验证码'
+            state: '成功'
+        });
+    }
+
+
+    loginOrReg = () => {
+
+        const {params} = this.props.navigation.state;
+        const phone = params ? params.param : null;
+
+        let data = {
+            "object": {
+                "telephone": phone,
+                "vercode": this.state.vercode,
+            }
+        };
+
+        console.log("telephone : " + phone + '---vercode : ' + this.state.vercode);
+
+        this.httpManager.loginOrReg(data, (response) => {
+            console.log("response.object", response.object);
+            if (response.errCode === RESULT_OK) {
+                alert("验证成功");
+                let authUser = data.object.authUser;
+                storage.save('userName', authUser.userName);
+                storage.save('userId', authUser.userId);
+                this.props.navigation.navigate('MainTab');
+            }
         })
-        setTimeout(()=>{
-            const requestSucc = 1;//Math.random() + 0.5 > 1
-            this.setState({
-                state: `（随机）模拟验证码获取${requestSucc ? '成功' : '失败'}`
-            })
-            shouldStartCounting && shouldStartCounting(requestSucc)
-        }, 1000);
     }
 }
 

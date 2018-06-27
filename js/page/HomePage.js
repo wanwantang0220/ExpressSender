@@ -6,6 +6,7 @@ import React, {Component} from 'react';
 import {Image, ImageBackground, StatusBar, Text, TouchableHighlight, View} from "react-native";
 import styles from "../style/Css";
 import NaviBarView from "../component/NaviBarView";
+import * as NavigationActions from "react-navigation";
 
 const BG = require("../../img/bc.png");
 const BG_SENDER = require("../../img/group2.png");
@@ -46,7 +47,7 @@ export default class HomePage extends Component {
                                             underlayColor='transparent'
                                             onHideUnderlay={()=>{}}
                                             onShowUnderlay={()=>{}}
-                                            onPress={()=>{this.props.navigation.navigate('Login')}}>
+                                            onPress={this.jumpTo}>
                         <ImageBackground style={[styles.image_background_sender]} source={BG_SENDER}
                                          resizeMode={Image.resizeMode.contain}>
                             <Image style={[styles.home_image_sender]} source={ICON_SENDER}/>
@@ -56,14 +57,31 @@ export default class HomePage extends Component {
                         </ImageBackground>
                         </TouchableHighlight>
                     </ImageBackground>
-                    <ImageBackground style={[styles.home_image_sender_record]}
-                              source={BG_SENDER_RECORD} resizeMode={Image.resizeMode.contain}>
-                    </ImageBackground>
+
+                            <ImageBackground style={[styles.home_image_sender_record]}>
+                                <TouchableHighlight
+                                    activeOpacity={0.7}
+                                    underlayColor='transparent'
+                                    onHideUnderlay={()=>{}}
+                                    onShowUnderlay={()=>{}}
+                                    onPress={()=> this.props.navigation.navigate('ExpressList')}>
+                                    <Image style={[styles.home_image_express_bg]}
+                                                     source={BG_SENDER_RECORD} resizeMode={Image.resizeMode.contain}>
+                                    </Image>
+                                </TouchableHighlight>
+                            </ImageBackground>
                     <Text style={[styles.home_text]}>您还未实名认证,立即认证>>></Text>
                     </View>
 
             </View>
         )
     }
+
+
+    jumpTo(){
+        // ()=>{this.props.navigation.navigate('Login')}
+    }
+
+
 }
 

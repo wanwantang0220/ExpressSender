@@ -31,7 +31,7 @@ export default class SettingPage extends PureComponent {
         super(props);
 
         this.state = {
-            phone: '18961722253'
+            phone: '18961720760'
         };
 
         this.httpManager = new HttpManager();
@@ -99,8 +99,6 @@ export default class SettingPage extends PureComponent {
             }
         });
 
-
-        // this.props.navigation.navigate('LoginSecond', {param: this.state.phone})
     }
 }
 

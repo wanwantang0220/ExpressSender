@@ -59,6 +59,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginStart:100
     },
+    home_image_express_bg:{
+        width:150,
+        height:100,
+        justifyContent: 'center',
+    },
     home_tvsender:{
         marginTop:5
     },
@@ -277,10 +282,10 @@ const styles = StyleSheet.create({
         flex:1
     },
     login_second_time:{
-        fontSize:14,
-        color:GrayColor,
-        flex:1,
-        textAlign:'left'
+        // fontSize:14,
+        // color:GrayColor,
+        // flex:1,
+        // textAlign:'left'
     },
     address_item_view:{
         width:deviceWidth,

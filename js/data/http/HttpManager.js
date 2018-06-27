@@ -18,13 +18,40 @@ export default class HttpManager {
     getVeriCode(data, callback) {
         const url = BaseUrl + ContastURL.CREATE_VERIFICATION_CODE;
         const fetchOptions = {
-            method:'POST',
+            method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
-            body:JsonUtil.jsonToStr(data)
+            body: JsonUtil.jsonToStr(data)
         };
+
+        console.log("data", JsonUtil.jsonToStr(data));
+        fetch(url, fetchOptions)
+            .then((response) => response.json())
+            .then((responseText) => {
+                callback(responseText);
+            }).done();
+    }
+
+
+
+    /***
+     * 登录/注册
+     * @param data
+     * @param callback
+     */
+    loginOrReg(data, callback) {
+        const url = BaseUrl + ContastURL.LOGIN_REGISTER;
+        const fetchOptions = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JsonUtil.jsonToStr(data)
+        };
+
         console.log("data", JsonUtil.jsonToStr(data));
         fetch(url, fetchOptions)
             .then((response) => response.json())
@@ -71,6 +98,11 @@ export default class HttpManager {
         })
     }
 
+
+
+    setHeader(data){
+
+    }
     /****---================================================================================***/
     /**
      * 待打单列表

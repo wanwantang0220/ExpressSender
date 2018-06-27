@@ -11,13 +11,13 @@ export default class TimerButton extends PureComponent{
         onClick: PropTypes.func,
         disableColor: PropTypes.string,
         timerTitle: PropTypes.string,
-        enable: PropTypes.oneOfType([PropTypes.bool,PropTypes.number])
+        enable: PropTypes.oneOfType([PropTypes.bool,PropTypes.number]),
     };
 
     constructor(props){
         super(props);
         this.state={
-            timerCount:this.props.timerCount || 60,
+            timerCount:this.props.timerCount || 30,
             timerTitle:this.props.timerTitle || '获取验证码',
             counting:false,
             selfEnable:true,
@@ -26,6 +26,9 @@ export default class TimerButton extends PureComponent{
         this.countDownAction = this.countDownAction.bind(this);
     }
 
+    componentDidMount() {
+        this.shouldStartCountting.bind(true);
+    }
 
     componentWillUnmount() {
         clearInterval(this.interval)
@@ -77,7 +80,7 @@ export default class TimerButton extends PureComponent{
                 this.interval&&clearInterval(this.interval);
                 this.setState({
                     timerCount: codeTime,
-                    timerTitle: this.props.timerTitle || '获取验证码',
+                    timerTitle: this.props.timerTitle,
                     counting: false,
                     selfEnable: true
                 })
