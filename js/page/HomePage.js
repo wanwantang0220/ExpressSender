@@ -3,7 +3,7 @@
  **/
 
 import React, {Component} from 'react';
-import {Image, ImageBackground, StatusBar, Text, TouchableHighlight, View} from "react-native";
+import {Image, ImageBackground, StatusBar, Text, TouchableHighlight, TouchableOpacity, View} from "react-native";
 import styles from "../style/Css";
 import NaviBarView from "../component/NaviBarView";
 import * as NavigationActions from "react-navigation";
@@ -42,12 +42,12 @@ export default class HomePage extends Component {
 
                     <View style={{flex:1}}>
                     <ImageBackground style={[styles.image_background]} source={BG} resizeMode={Image.resizeMode.stretch} >
-                        <TouchableHighlight
+                        <TouchableOpacity
                                             activeOpacity={0.7}
                                             underlayColor='transparent'
                                             onHideUnderlay={()=>{}}
                                             onShowUnderlay={()=>{}}
-                                            onPress={this.jumpTo}>
+                                            onPress={()=>{this.props.navigation.navigate('Login')}}>
                         <ImageBackground style={[styles.image_background_sender]} source={BG_SENDER}
                                          resizeMode={Image.resizeMode.contain}>
                             <Image style={[styles.home_image_sender]} source={ICON_SENDER}/>
@@ -55,11 +55,11 @@ export default class HomePage extends Component {
                             <View style={[styles.home_line]}/>
                             <Text style={[styles.home_tvsender]}>发快递</Text>
                         </ImageBackground>
-                        </TouchableHighlight>
+                        </TouchableOpacity>
                     </ImageBackground>
 
                             <ImageBackground style={[styles.home_image_sender_record]}>
-                                <TouchableHighlight
+                                <TouchableOpacity
                                     activeOpacity={0.7}
                                     underlayColor='transparent'
                                     onHideUnderlay={()=>{}}
@@ -68,7 +68,7 @@ export default class HomePage extends Component {
                                     <Image style={[styles.home_image_express_bg]}
                                                      source={BG_SENDER_RECORD} resizeMode={Image.resizeMode.contain}>
                                     </Image>
-                                </TouchableHighlight>
+                                </TouchableOpacity>
                             </ImageBackground>
                     <Text style={[styles.home_text]}>您还未实名认证,立即认证>>></Text>
                     </View>
@@ -77,10 +77,6 @@ export default class HomePage extends Component {
         )
     }
 
-
-    jumpTo(){
-        // ()=>{this.props.navigation.navigate('Login')}
-    }
 
 
 }

@@ -3,7 +3,7 @@
  **/
 
 import React, {PureComponent} from 'react';
-import {Dimensions, Image, StyleSheet, View, Text} from "react-native";
+import {Dimensions, Image, StyleSheet, View, Text, StatusBar} from "react-native";
 import ScrollableTabView, {ScrollableTabBar} from 'react-native-scrollable-tab-view';
 import {BlackTextColor, White} from "../style/BaseStyle";
 import AddressReceiverPage from "./AddressReceiverPage";
@@ -11,6 +11,7 @@ import AddressSenderPage from "./AddressSenderPage";
 import styles from "../style/Css";
 import ExpressSignPage from "./ExpressSignPage";
 import ExpressCollectPage from "./ExpressCollectPage";
+import NaviBarView from "../component/NaviBarView";
 
 
 export default class ExpressListPage extends PureComponent {
@@ -18,7 +19,12 @@ export default class ExpressListPage extends PureComponent {
     static navigationOptions = {
         //标题
         drawerLabel: '我的快递',
-        title:'我的快递'
+        title:'我的快递',
+        headerTitleStyle: {
+            flex: 1,
+            textAlign: "center",
+        },
+        headerRight: <View/>
     };
 
 
@@ -39,6 +45,11 @@ export default class ExpressListPage extends PureComponent {
 
         return (
             <View style={[styles.container]}>
+                <StatusBar
+                    animated={true}
+                    backgroundColor="black"
+                    barStyle='light-content'/>
+                <NaviBarView backgroundColor="black"/>
                 <ScrollableTabView
                     style={{marginTop:10}}
                     tabBarInactiveTextColor={BlackTextColor} // 没有被选中的文字颜色

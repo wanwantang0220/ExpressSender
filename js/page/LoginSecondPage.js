@@ -3,7 +3,7 @@
  **/
 
 import React, {PureComponent} from 'react';
-import {Dimensions, Image, StyleSheet, View, Text, TextInput, TouchableHighlight} from "react-native";
+import {Dimensions, Image, StyleSheet, View, Text, TextInput, TouchableHighlight, TouchableOpacity} from "react-native";
 import styles from "../style/Css";
 import {ColorLineRed, GrayColor, White} from "../style/BaseStyle";
 import TimerButton from "../component/TimerButton";
@@ -32,7 +32,7 @@ export default class LoginSecondPage extends PureComponent {
         super(props);
 
         this.state = {
-            phone: '',
+            phone: '18961722253',
             vercode: '',
             timer: -1,
             state: '成功',
@@ -49,7 +49,7 @@ export default class LoginSecondPage extends PureComponent {
     render() {
 
         const {params} = this.props.navigation.state;
-        const phone = params ? params.param : null;
+        const phone =  params ? params.param : null;
         const btnBg = this.state.vercode === "" ? BgUnOnPress : BgOnPress;
 
         return (
@@ -82,7 +82,7 @@ export default class LoginSecondPage extends PureComponent {
                         underlineColorAndroid={ColorLineRed}/>
                 </View>
 
-                <TouchableHighlight
+                <TouchableOpacity
                     style={btnBg}
                     activeOpacity={0.7}
                     underlayColor='green'
@@ -92,7 +92,7 @@ export default class LoginSecondPage extends PureComponent {
                     }}
                     onPress={this.loginOrReg}>
                     <Text style={[styles.unpress_login_btn_text]}>注册/登录</Text>
-                </TouchableHighlight>
+                </TouchableOpacity>
 
                 <Text style={styles.login_xieyi}>注册即表示你已经阅读并同意《用户注册协议》</Text>
 
@@ -111,9 +111,9 @@ export default class LoginSecondPage extends PureComponent {
     loginOrReg = () => {
 
         const {params} = this.props.navigation.state;
-        const phone = params ? params.param : null;
+        const phone =  params ? params.param : null;
 
-        let data = {
+        let netParams = {
             "object": {
                 "telephone": phone,
                 "vercode": this.state.vercode,
@@ -122,14 +122,21 @@ export default class LoginSecondPage extends PureComponent {
 
         console.log("telephone : " + phone + '---vercode : ' + this.state.vercode);
 
-        this.httpManager.loginOrReg(data, (response) => {
+        this.httpManager.loginOrReg(netParams, (response) => {
             console.log("response.object", response.object);
             if (response.errCode === RESULT_OK) {
                 alert("验证成功");
-                let authUser = data.object.authUser;
+                let authUser = response.object.authUser;
+                let staffInfo = response.object.staffInfo;
                 storage.save('userName', authUser.userName);
                 storage.save('userId', authUser.userId);
+                storage.save('staffInfo',staffInfo);
+                //存储用户Token
+                storage.save('cookie','SESSION='+response.object.sessionId+';SSOTOKEN='+response.object.ssoToken);
+
                 this.props.navigation.navigate('MainTab');
+            }else{
+                //TODO 异常处理
             }
         })
     }

@@ -3,7 +3,7 @@
  **/
 
 import React, {PureComponent} from 'react';
-import {Text, TextInput, TouchableHighlight, View} from "react-native";
+import {Text, TextInput, TouchableHighlight, TouchableOpacity, View} from "react-native";
 import styles from "../style/Css";
 import {ColorLineRed} from "../style/BaseStyle";
 import HttpManager from "../data/http/HttpManager";
@@ -31,7 +31,7 @@ export default class SettingPage extends PureComponent {
         super(props);
 
         this.state = {
-            phone: '18961720760'
+            phone: '13115085126'
         };
 
         this.httpManager = new HttpManager();
@@ -60,7 +60,7 @@ export default class SettingPage extends PureComponent {
                         underlineColorAndroid={ColorLineRed}/>
                 </View>
 
-                <TouchableHighlight
+                <TouchableOpacity
                     style={btnBg}
                     activeOpacity={0.7}
                     underlayColor='green'
@@ -70,7 +70,7 @@ export default class SettingPage extends PureComponent {
                     }}
                     onPress={this.getVerCode}>
                     <Text style={[styles.unpress_login_btn_text]}>发送验证码</Text>
-                </TouchableHighlight>
+                </TouchableOpacity>
 
             </View>
         )

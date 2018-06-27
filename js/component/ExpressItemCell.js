@@ -1,11 +1,11 @@
 
 
-import Reacr,{PureComponent} from 'react';
+import React,{PureComponent} from 'react';
 import {White} from "../style/BaseStyle";
 import {Image, Text, View} from "react-native";
 
 
-const PIC=require('../../img/');
+const PIC=require('../../img/icon_setting.png');
 export default  class ExpressItemCell extends PureComponent{
 
     render(){
