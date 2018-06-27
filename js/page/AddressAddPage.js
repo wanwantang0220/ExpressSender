@@ -3,10 +3,12 @@
  **/
 
 import React, {PureComponent} from 'react';
-import {Image, StyleSheet, View, Text, TouchableHighlight, TextInput} from "react-native";
+import {Image, StyleSheet, View, Text, TouchableHighlight, TextInput, TouchableOpacity} from "react-native";
 import styles from "../style/Css";
 import {deviceWidth} from "../util/ScreenUtil";
 import {BackgroundColorLight, BlackColor, ColorLineRed, GrayColor, GrayWhiteColor} from "../style/BaseStyle";
+import HttpManager from "../data/http/HttpManager";
+import {RESULT_OK} from "../data/http/ContastURL";
 
 const SETTING_ARROW = require('../../img/icon_arrow.png');
 
@@ -28,8 +30,16 @@ export default class AddressAddPage extends PureComponent {
         super(props);
 
         this.state = {
-
+            addressName:'',
+            addressPhone:'',
+            addressDetail:'',
+            proviceCityRegionTxt:'',
+            addrType:'1',
+            longitude:'',
+            latitude:'',
         }
+        
+        this.httpManager = new HttpManager();
     }
 
     componentDidMount() {
@@ -45,30 +55,35 @@ export default class AddressAddPage extends PureComponent {
                 <View style={{flex:3,flexDirection:'column',marginTop:10,backgroundColor:'#ffffff'}}>
                         <View style={[styles.add_address_view1]}>
                             <Text style={[styles.add_address_text]}>姓名</Text>
-                            <TextInput style={[styles.add_address_textinput]}
+                            <TextInput
+                                style={[styles.add_address_textinput]}
                                        placeholder='请输入姓名'
-                                       underlineColorAndroid='#00000000'/>
+                                       underlineColorAndroid='#00000000'
+                                onChange={(text)=>{this.setState({addressName:text})}}/>
                         </View>
                         <View style={[styles.view_line]}/>
                         <View style={[styles.add_address_view1]}>
                                 <Text style={[styles.add_address_text]}>联系方式</Text>
                                 <TextInput style={[styles.add_address_textinput]}
                                            placeholder='请输入联系方式'
-                                           underlineColorAndroid='#00000000'/>
+                                           underlineColorAndroid='#00000000'
+                                           onChange={(text)=>{this.setState({addressPhone:text})}}/>
                         </View>
                         <View style={[styles.view_line]}/>
                         <View style={[styles.add_address_view1]}>
                                 <Text style={[styles.add_address_text]}>所在区域</Text>
                                 <Text style={[styles.add_address_textinput]}
                                            placeholder='请选择区域'
-                                           underlineColorAndroid='#00000000'/>
+                                           underlineColorAndroid='#00000000'
+                                />
                         </View>
                         <View style={[styles.view_line]}/>
                         <View style={[styles.add_address_view1]}>
                                 <Text style={[styles.add_address_text]}>详细地址</Text>
                                 <TextInput style={[styles.add_address_textinput]}
                                            placeholder='请填写详细地址'
-                                           underlineColorAndroid='#00000000'/>
+                                           underlineColorAndroid='#00000000'
+                                           onChange={(text)=>{this.setState({addressDetail:text})}}/>
                         </View>
                         <View style={[styles.view_line]}/>
                         <View style={[styles.add_address_view1]}>
@@ -97,14 +112,55 @@ export default class AddressAddPage extends PureComponent {
                         <Text style={[styles.add_address_text_btn2]}>智能录入</Text>
                     </View>
                 </View>
-                <View style={{flex:1,marginTop:30}}>
+                <TouchableOpacity
+                    style={{flex:1,marginTop:30}}
+                    activeOpacity={0.7}
+                    underlayColor='green'
+                    onHideUnderlay={() => {
+                    }}
+                    onShowUnderlay={() => {
+                    }}
+                    onPress={this.saveAddress}>
                     <View style={[styles.onpress_login_btn]}>
                         <Text style={[styles.unpress_login_btn_text]}>保存</Text>
                     </View>
-                </View>
+                </TouchableOpacity>
 
             </View>
         )
+    }
+
+
+
+    saveAddress = ()=>{
+
+        const userName = storage.load('userName');
+        const params = {
+            "object": {
+                "name": this.state.addressName,
+                "phone": this.state.addressPhone,
+                "addrDetail": this.state.addressDetail,
+                "proviceCityRegionTxt": "江苏省-无锡市-新吴区",// this.state.proviceCityRegionTxt,
+                "addrType": this.state.addrType,
+                "longitude": "120.30 ",//this.state.longitude,
+                "latitude": "31.57",//this.state.latitude,
+                "addUserType": "1",
+                "addUserName": "陈平",
+                "addUserPhone":userName,
+                "active": "1"
+            }
+        }
+
+
+        this.httpManager.addAddress(params,(response)=>{
+            if (response.errCode === RESULT_OK) {
+                alert("地址添加成功")
+            }else{
+
+            }
+        })
+
+
     }
 }
 

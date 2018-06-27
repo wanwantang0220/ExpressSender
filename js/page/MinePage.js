@@ -40,7 +40,7 @@ export default class MinePage extends Component {
                      <View style={[styles.view_line_full]}/>
                     <MineItem  logo={MINE_EXPRESS}  content="我的快递" onPress={()=>this.props.navigation.navigate('ExpressList')}/>
                     <View style={[styles.view_line]}/>
-                    <MineItem  logo={MINE_ADDRESS}  content="地址簿" onPress={()=>this.props.navigation.navigate('AddressAdd')}/>
+                    <MineItem  logo={MINE_ADDRESS}  content="地址簿" onPress={()=>this.props.navigation.navigate('AddressList')}/>
                     <View style={[styles.view_line]}/>
                     <MineItem  logo={MINE_CARD}  content="优惠券" onPress={()=>this.props.navigation.navigate('CouponList')}/>
                     <View style={[styles.view_line]}/>

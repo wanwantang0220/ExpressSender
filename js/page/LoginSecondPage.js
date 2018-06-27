@@ -123,7 +123,6 @@ export default class LoginSecondPage extends PureComponent {
         console.log("telephone : " + phone + '---vercode : ' + this.state.vercode);
 
         this.httpManager.loginOrReg(netParams, (response) => {
-            console.log("response.object", response.object);
             if (response.errCode === RESULT_OK) {
                 alert("验证成功");
                 let authUser = response.object.authUser;
