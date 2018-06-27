@@ -14,9 +14,17 @@ const BG_SENDER_RECORD = require("../../img/font.png");
 
 export default class HomePage extends Component {
 
+
     static navigationOptions = {
-        //设置StackNavigator属性
-        // header:null,
+        //标题
+        drawerLabel: '首页',
+        title:'首页',
+        headerTitle:"首页",
+        headerTitleStyle: {
+            flex: 1,
+            textAlign: "center",
+        },
+        headerRight: <View/>
     };
 
     render() {

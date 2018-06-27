@@ -3,9 +3,10 @@
  **/
 
 import React, {PureComponent} from 'react';
-import {Dimensions, Image, StyleSheet, View, Text, TextInput, TouchableHighlight} from "react-native";
+import {Text, TextInput, TouchableHighlight, View} from "react-native";
 import styles from "../style/Css";
-import {ColorLineRed, White} from "../style/BaseStyle";
+import {ColorLineRed} from "../style/BaseStyle";
+import HttpManager from "../data/http/HttpManager";
 
 
 const BgUnOnPress = styles.unpress_login_btn;
@@ -30,12 +31,13 @@ export default class SettingPage extends PureComponent {
         super(props);
 
         this.state = {
-            phone: ''
-        }
+            phone: '18961722253'
+        };
+
+        this.httpManager = new HttpManager();
     }
 
     componentDidMount() {
-
     }
 
     render() {
@@ -60,17 +62,45 @@ export default class SettingPage extends PureComponent {
 
                 <TouchableHighlight
                     style={btnBg}
-                                    activeOpacity={0.7}
-                                    underlayColor='green'
-                                    onHideUnderlay={()=>{}}
-                                    onShowUnderlay={()=>{}}
-                                    onPress={()=>{this.props.navigation.navigate('LoginSecond',
-                                        {param:this.state.phone})}}>
+                    activeOpacity={0.7}
+                    underlayColor='green'
+                    onHideUnderlay={() => {
+                    }}
+                    onShowUnderlay={() => {
+                    }}
+                    onPress={this.getVerCode}>
                     <Text style={[styles.unpress_login_btn_text]}>发送验证码</Text>
                 </TouchableHighlight>
 
             </View>
         )
+    }
+
+
+    getVerCode = () => {
+        let mobile = this.state.phone;
+        let isTrueMobile;
+
+        if(mobile.length===11){
+            isTrueMobile = true;
+        }else{
+            isTrueMobile=false;
+        }
+
+        let params = {
+            "object": this.state.phone,
+        };
+
+        this.httpManager.getVeriCode(params, (response) => {
+            console.log("response.object", response.object);
+            if (response.errCode === "000000") {
+                alert("发送成功");
+                this.props.navigation.navigate('LoginSecond', {param: this.state.phone})
+            }
+        });
+
+
+        // this.props.navigation.navigate('LoginSecond', {param: this.state.phone})
     }
 }
 

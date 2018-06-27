@@ -18,6 +18,11 @@ const RootNavigator = createStackNavigator({
     Profile: { screen: ProfileScreen },
 });
 
+/***
+ * Param key needs to be unique for the Redux store. Most people only have one store, so can use any string (eg. "root"),
+ * as long as it's consistent with the call to reduxifyNavigator below.
+ * @type {React.ComponentType<{state: ; dispatch: Dispatch}>}
+ */
 const AppWithNavigationState = reduxifyNavigator(RootNavigator,'root');
 
 /**

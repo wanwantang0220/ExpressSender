@@ -5,7 +5,14 @@ import {applyMiddleware, createStore} from "redux";
 import AppReducer from "./redux_example/reducers/AppReducer";
 import {AppNavigator, middleware} from "./redux_example/navigators/AppNavigator";
 
-
+/***
+ * applyMiddleware(...middleware)
+ * 使用包含自定义功能的 middleware 来扩展 Redux 是一种推荐的方式
+ * Middleware 可以让你包装 store 的 dispatch 方法来达到你想要的目的。
+ * 同时， middleware 还拥有“可组合”这一关键特性。多个 middleware 可以被组合到一起使用，形成 middleware 链。
+ * 其中，每个 middleware 都不需要关心链中它前后的 middleware 的任何信息
+ * @type {Store<any & any, Action> & {dispatch: any}}
+ */
 const store= createStore(AppReducer,applyMiddleware(middleware));
 
 class ExampleReduxApp extends  Component{

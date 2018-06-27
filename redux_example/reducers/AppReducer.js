@@ -53,6 +53,11 @@ function auth(state =initialAuthState,action) {
 
 /***
  *  使用 ES6 的对象字面量简写方式定义对象结构
+ *  reducer 函数 拆分成多个单独的函数，拆分后的每个函数负责独立管理 state 的一部分
+ *  combineReducers 辅助函数的作用是，把一个由多个不同 reducer 函数作为 value 的 object，合并成一个最终的 reducer 函数，
+ *  然后就可以对这个 reducer 调用 createStore 方法。
+ *
+ *  一个调用 reducers 对象里所有 reducer 的 reducer，并且构造一个与 reducers 对象结构相同的 state 对象
  */
 const AppReducer = combineReducers({
     nav,

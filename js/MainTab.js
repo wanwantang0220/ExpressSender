@@ -6,6 +6,7 @@ import HomePage from "./page/HomePage";
 import MinePage from "./page/MinePage";
 import styles from './style/Css';
 import {ColorEnd, ColorRed, Secondary_Text_Color, White} from "./style/BaseStyle";
+import { createStackNavigator, createBottomTabNavigator, createMaterialTopNavigator, createSwitchNavigator } from 'react-navigation'
 
 
 const MainTabSelectedIcon = require("../img/i_home_foc.png");
@@ -14,7 +15,7 @@ const MineTabUnSelectedIcon = require("../img/i_mine.png");
 const MineTabSelectedIcon = require("../img/i_mine_foc.png");
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
 
-export default MainTab = TabNavigator({
+const MainTab = createBottomTabNavigator({
 
     Home: {
         screen: HomePage,
@@ -25,9 +26,11 @@ export default MainTab = TabNavigator({
             drawerLabel: '首页',
             //标题
             title: "首页",
+            headerTitle:"首页",
             drawerLockMode:'locked-closed',
             headerStyle: styles.navigator,
             headerTitleStyle: styles.navigatorTitle,
+            headerRight: <View/>,
             gesturesEnabled:true,
             //这里设置Tabbar不同页面可能会不同的属性
             tabBarVisible: true,
@@ -106,5 +109,30 @@ export default MainTab = TabNavigator({
 
         }
     }
-})
+});
 
+
+/***
+ * 解决createStackNavigator  嵌套  createBottomTabNavigator  标题空白
+ * @param navigation
+ * @returns {{title, headerTitleStyle: {flex: number, textAlign: string, marginStart: number}, headerRight: *}}
+ */
+MainTab.navigationOptions = ({ navigation }) => {
+    let { routeName } = navigation.state.routes[navigation.state.index];
+
+    // You can do whatever you like here to pick the title based on the route name
+    let headerTitle = routeName;
+
+    return {
+        title:headerTitle,
+        headerTitleStyle: {
+            flex: 1,
+            textAlign: "center",
+            marginStart:50,
+        },
+        headerRight: <View/>
+    };
+};
+
+
+export default MainTab;

@@ -1,20 +1,77 @@
 import {Nuknown_Error, NetWork_Request_Error, ErrorAnayle} from './ErrorAnayle'
 import ErrorBean from "./ErrorBean";
 import JsonUtil from "./JsonUtil";
+import * as ContastURL from "./ContastURL";
 
 
 /*基础链接头*/
-const BaseUrl = "https://manager.xilaikd.com/xilaireceiver_s";
-// const BaseUrl = "http://10.10.10.166:1882";
-/*待打单*/
-const WAIT_ACCEPT_ORDER = "/order/queryWaitAcceptOrder";
-
-const LOGIN = "/user/login";
-const ADDRESS_LIST = "/addressBook/queryBySearchFilter";
-const ADDRESS_EDIT = "/addressBook/update";
+const BaseUrl = "http://smallapp-cs.xilaikd.com/xilaisender_s/";
 
 export default class HttpManager {
 
+
+    /***
+     *  获取验证码
+     * @param data
+     * @param callback
+     */
+    getVeriCode(data, callback) {
+        const url = BaseUrl + ContastURL.CREATE_VERIFICATION_CODE;
+        const fetchOptions = {
+            method:'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body:JsonUtil.jsonToStr(data)
+        };
+        console.log("data", JsonUtil.jsonToStr(data));
+        fetch(url, fetchOptions)
+            .then((response) => response.json())
+            .then((responseText) => {
+                callback(responseText);
+            }).done();
+    }
+
+    /*请求数据=本地加网络*/
+    fetchNetData(url) {
+        return new Promise((resolve, reject) => {
+            fetch(url)
+                .then((response) => response.json())
+                .then((responseData) => {
+                    resolve(responseData);
+                })
+                .catch((error) => {
+                    reject(ErrorAnayle.getErrorBean(NetWork_Request_Error))
+                })
+                .done();
+        })
+    }
+
+    /*请求数据=本地加网络*/
+    postNetData(url, data) {
+        let header = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JsonUtil.jsonToStr(data)
+        };
+        return new Promise((resolve, reject) => {
+            fetch(url, header)
+                .then((response) => response.json())
+                .then((responseData) => {
+                    resolve(responseData);
+                })
+                .catch((error) => {
+                    reject(ErrorAnayle.getErrorBean(NetWork_Request_Error))
+                })
+                .done();
+        })
+    }
+
+    /****---================================================================================***/
     /**
      * 待打单列表
      * @param start
@@ -48,71 +105,31 @@ export default class HttpManager {
     }
 
 
-    /*请求数据=本地加网络*/
-    fetchNetData(url) {
-        return new Promise((resolve, reject) => {
-            fetch(url)
-                .then((response) => response.json())
-                .then((responseData) => {
-                    resolve(responseData);
-                })
-                .catch((error) => {
-                    reject(ErrorAnayle.getErrorBean(NetWork_Request_Error))
-                })
-                .done();
-        })
-    }
-
-
-    /*请求数据=本地加网络*/
-    postNetData(url, data) {
-        let header = {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JsonUtil.jsonToStr(data)
-        };
-        return new Promise((resolve, reject) => {
-            fetch(url, header)
-                .then((response) => response.json())
-                .then((responseData) => {
-                    resolve(responseData);
-                })
-                .catch((error) => {
-                    reject(ErrorAnayle.getErrorBean(NetWork_Request_Error))
-                })
-                .done();
-        })
-    }
-
-
     /**
      * 登录
      * @param data
      * @param callback
      */
-    requestLogin(data, callback) {
-
-        const url = BaseUrl + LOGIN;
-        const fetchOptions = {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JsonUtil.jsonToStr(data)
-        };
-
-        console.log("data", JsonUtil.jsonToStr(data));
-        fetch(url, fetchOptions)
-            .then((response) => response.json())
-            .then((responseText) => {
-                callback(responseText);
-            }).done();
-
-    }
+    // requestLogin(data, callback) {
+    //
+    //     const url = BaseUrl + LOGIN;
+    //     const fetchOptions = {
+    //         method: 'POST',
+    //         headers: {
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JsonUtil.jsonToStr(data)
+    //     };
+    //
+    //     console.log("data", JsonUtil.jsonToStr(data));
+    //     fetch(url, fetchOptions)
+    //         .then((response) => response.json())
+    //         .then((responseText) => {
+    //             callback(responseText);
+    //         }).done();
+    //
+    // }
 
     /**
      * 地址列表
