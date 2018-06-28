@@ -2,7 +2,7 @@ import {Nuknown_Error, NetWork_Request_Error, ErrorAnayle} from './ErrorAnayle'
 import ErrorBean from "./ErrorBean";
 import JsonUtil from "./JsonUtil";
 import {
-    ADDRESS_CREATE, ADDRESS_RETRIEVE_APP, CREATE_VERIFICATION_CODE, LOGIN_REGISTER, MY_EXPRESS_LIST,
+    ADDRESS_CREATE, ADDRESS_RETRIEVE_APP, ADDRESS_UPDATE, CREATE_VERIFICATION_CODE, LOGIN_REGISTER, MY_EXPRESS_LIST,
     RESULT_OK
 } from "./ContastURL";
 
@@ -38,7 +38,6 @@ export default class HttpManager {
     }
 
 
-
     /***
      * 登录/注册
      * @param data
@@ -69,7 +68,7 @@ export default class HttpManager {
      * @param data
      * @param callback
      */
-    getExpressCollect(data, callback){
+    getExpressCollect(data, callback) {
         const url = BaseUrl + MY_EXPRESS_LIST;
 
         return new Promise((resolve, reject) => {
@@ -102,9 +101,9 @@ export default class HttpManager {
      * @param data
      * @param callback
      */
-    addAddress(data,callback){
+    addAddress(data, callback) {
 
-        const url = BaseUrl +ADDRESS_CREATE;
+        const url = BaseUrl + ADDRESS_CREATE;
 
         return new Promise((resolve, reject) => {
             this.postNetData(url, data)
@@ -130,8 +129,6 @@ export default class HttpManager {
         })
 
     }
-
-
 
 
     /**
@@ -198,7 +195,6 @@ export default class HttpManager {
     }
 
 
-
     /*请求数据=本地加网络*/
     fetchNetData(url) {
         return new Promise((resolve, reject) => {
@@ -217,8 +213,8 @@ export default class HttpManager {
     /*请求数据=本地加网络*/
     postNetData(url, data) {
         //获取存储Token
-        let cookie= storage.load({
-            key:'cookie'
+        let cookie = storage.load({
+            key: 'cookie'
         });
 
         let header = {

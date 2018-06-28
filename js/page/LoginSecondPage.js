@@ -49,7 +49,7 @@ export default class LoginSecondPage extends PureComponent {
     render() {
 
         const {params} = this.props.navigation.state;
-        const phone =  params ? params.param : null;
+        const phone = params ? params.param : null;
         const btnBg = this.state.vercode === "" ? BgUnOnPress : BgOnPress;
 
         return (
@@ -111,7 +111,7 @@ export default class LoginSecondPage extends PureComponent {
     loginOrReg = () => {
 
         const {params} = this.props.navigation.state;
-        const phone =  params ? params.param : null;
+        const phone = params ? params.param : null;
 
         let netParams = {
             "object": {
@@ -129,12 +129,12 @@ export default class LoginSecondPage extends PureComponent {
                 let staffInfo = response.object.staffInfo;
                 storage.save('userName', authUser.userName);
                 storage.save('userId', authUser.userId);
-                storage.save('staffInfo',staffInfo);
+                storage.save('staffInfo', staffInfo);
                 //存储用户Token
-                storage.save('cookie','SESSION='+response.object.sessionId+';SSOTOKEN='+response.object.ssoToken);
+                storage.save('cookie', 'SESSION=' + response.object.sessionId + ';SSOTOKEN=' + response.object.ssoToken);
 
                 this.props.navigation.navigate('MainTab');
-            }else{
+            } else {
                 //TODO 异常处理
             }
         })

@@ -20,14 +20,14 @@ export default class MineItem extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            logo:''
+            logo: ''
         }
     }
 
-    static propTypes={
-        logo:PropTypes.number,
-        content:PropTypes.string,
-        onPress:PropTypes.func
+    static propTypes = {
+        logo: PropTypes.number,
+        content: PropTypes.string,
+        onPress: PropTypes.func
     };
 
     componentDidMount() {
@@ -35,13 +35,13 @@ export default class MineItem extends PureComponent {
 
     render() {
 
-        const {logo,content,onPress }=this.props;
+        const {logo, content, onPress} = this.props;
         return (
             <TouchableOpacity
                 style={[styles.mine_item]}
-                              activeOpacity={0.85}
-                              underlayColor='white'
-            onPress={onPress}>
+                activeOpacity={0.85}
+                underlayColor='white'
+                onPress={onPress}>
                 <View style={[styles.mine_item_left]}>
                     <Image style={[styles.mine_item_logo]} source={logo} resizeMode={Image.resizeMode.contain}/>
                     <Text style={[styles.mine_item_text]}>{content}</Text>
@@ -52,21 +52,21 @@ export default class MineItem extends PureComponent {
     }
 
     getLogo() {
-       const style = this.props.style;
-       var logo;
-       if(style==='express'){
-           logo = MINE_EXPRESS;
-       }else if(style==='address'){
-           logo = MINE_ADDRESS;
-       }else  if(style==='card'){
-           logo = MINE_CARD;
-       }else  if(style==='setting'){
-           logo = MINE_SETTING;
-       }
+        const style = this.props.style;
+        var logo;
+        if (style === 'express') {
+            logo = MINE_EXPRESS;
+        } else if (style === 'address') {
+            logo = MINE_ADDRESS;
+        } else if (style === 'card') {
+            logo = MINE_CARD;
+        } else if (style === 'setting') {
+            logo = MINE_SETTING;
+        }
 
-       this.setState({
-           logo:logo
-       })
+        this.setState({
+            logo: logo
+        })
     }
 }
 

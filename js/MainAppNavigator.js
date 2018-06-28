@@ -23,7 +23,7 @@ const mainMiddleware = createReactNavigationReduxMiddleware(
 
 const RootNavigator = createStackNavigator({
     MainTab: {
-        screen:MainTab,
+        screen: MainTab,
     },
     // // 下面三个页面我需要隐藏导航栏
     // Home: {
@@ -34,48 +34,48 @@ const RootNavigator = createStackNavigator({
     //     screen: MinePage,
     //     // navigationOptions: ({navigation}) => ({header:null, gesturesEnable:true})
     // },
-    AddressList:{
-        screen:AddressListPage,
+    AddressList: {
+        screen: AddressListPage,
     },
-    ExpressList:{
-        screen:ExpressListPage,
+    ExpressList: {
+        screen: ExpressListPage,
     },
-    CouponList:{
-        screen:CouponListPage
+    CouponList: {
+        screen: CouponListPage
     },
-    Settings:{
-        screen:SettingPage
+    Settings: {
+        screen: SettingPage
     },
-    Login:{
-        screen:LoginPage,
+    Login: {
+        screen: LoginPage,
         // navigationOptions: ({navigation}) => ({header: null, gesturesEnable: true})
 
     },
-    LoginSecond:{
-        screen:LoginSecondPage
+    LoginSecond: {
+        screen: LoginSecondPage
     },
-    AddressAdd:{
-        screen:AddressAddPage
+    AddressAdd: {
+        screen: AddressAddPage
     },
-    AddressEdit:{
-        screen:AddressEditPage
+    AddressEdit: {
+        screen: AddressEditPage
     },
-    OrderDetail:{
-        screen:OrderDetailPage
+    OrderDetail: {
+        screen: OrderDetailPage
     },
-    ReduxIndex:{
-        screen:ReduxIndexPage
+    ReduxIndex: {
+        screen: ReduxIndexPage
     }
 });
 
 
-const AppWithNavigationState = reduxifyNavigator(RootNavigator,'root');
+const AppWithNavigationState = reduxifyNavigator(RootNavigator, 'root');
 
 /**
  * 传入所有state，返回指定的state数据
  */
-const mapStateToProps = state =>({
-    state:state.nav,
+const mapStateToProps = state => ({
+    state: state.nav,
 });
 
 /***
@@ -84,5 +84,4 @@ const mapStateToProps = state =>({
 const MainAppNavigator = connect(mapStateToProps)(AppWithNavigationState);
 
 
-
-export{RootNavigator,MainAppNavigator,mainMiddleware}
+export {RootNavigator, MainAppNavigator, mainMiddleware}

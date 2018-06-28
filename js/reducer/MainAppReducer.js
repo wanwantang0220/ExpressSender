@@ -7,14 +7,13 @@ const tempNavState = RootNavigator.router.getStateForAction(firstAction);
 // const secondAction = RootNavigator.router.getActionForPathAndParams('Login');
 
 
-
 const initialNavState = RootNavigator.router.getStateForAction(
     tempNavState
 );
 
-function nav(state=initialNavState,action) {
+function nav(state = initialNavState, action) {
     let nextState;
-    switch (action.type){
+    switch (action.type) {
         default:
             nextState = RootNavigator.router.getStateForAction(action, state);
             break;

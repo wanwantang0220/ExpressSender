@@ -8,8 +8,7 @@ export default class AddressItemCell extends PureComponent {
 
     constructor(props) {
         super(props);
-        this.state = {
-        };
+        this.state = {};
         this.httpManager = new HttpManager();
 
     }
@@ -18,8 +17,9 @@ export default class AddressItemCell extends PureComponent {
         // let {address,navigator} = this.props;
         // const addressdetail = address.provicessCityRegionTxt + address.addrDetail;
         return (
-            <TouchableOpacity onPress={()=>{}}>
-                <View style={{backgroundColor:'#ffffff'}}>
+            <TouchableOpacity onPress={() => {
+            }}>
+                <View style={{backgroundColor: '#ffffff'}}>
                     <View style={[styles.address_item_view]}>
                         <Text style={[styles.address_item_text1]}>测试</Text>
                         <Text style={[styles.address_item_text2]}>11111111111</Text>
@@ -34,9 +34,6 @@ export default class AddressItemCell extends PureComponent {
             </TouchableOpacity>
         )
     }
-
-
-
 
 
 }

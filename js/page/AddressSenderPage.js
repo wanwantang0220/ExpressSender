@@ -19,9 +19,7 @@ export default class AddressSenderPage extends PureComponent {
     constructor(props) {
         super(props);
 
-        this.state = {
-
-        }
+        this.state = {}
     }
 
     componentDidMount() {
@@ -32,7 +30,7 @@ export default class AddressSenderPage extends PureComponent {
 
         return (
             <View style={[styles.mainContainer]}>
-                <AddressItemEditCell />
+                <AddressItemEditCell/>
             </View>
         )
     }

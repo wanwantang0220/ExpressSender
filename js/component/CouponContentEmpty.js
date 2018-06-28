@@ -1,33 +1,28 @@
-
-import React,{PureComponent} from 'react';
+import React, {PureComponent} from 'react';
 import {Image, Text, View} from "react-native";
 import styles from "../style/Css";
 
 
-const  PIC_EMPTY=require('../../img/quan.png');
-export default class CouponContentEmpty extends PureComponent{
+const PIC_EMPTY = require('../../img/quan.png');
+export default class CouponContentEmpty extends PureComponent {
 
 
-
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
-
-        }
+        this.state = {}
     }
 
 
-
-    render(){
-        return(
+    render() {
+        return (
             <View style={[styles.coupon_empty_view]}>
 
                 <Image
-                style={{}}
-                source={PIC_EMPTY}
-                resizeMode={Image.resizeMode.contain}
+                    style={{}}
+                    source={PIC_EMPTY}
+                    resizeMode={Image.resizeMode.contain}
                 />
-                <Text style={{fontSize:12}}>您当前没有卡券哦~</Text>
+                <Text style={{fontSize: 12}}>您当前没有卡券哦~</Text>
             </View>
         )
     }

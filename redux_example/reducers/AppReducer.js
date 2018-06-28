@@ -51,6 +51,24 @@ function auth(state =initialAuthState,action) {
     }
 }
 
+const initialAddressListState = {
+    addressList:[],
+    isLoading:true,
+    isLoadingMore:false,
+    isRefreshing:false
+};
+function addresslist(state=initialAddressListState,action) {
+    switch (action.type){
+        case '':
+            return Object.assign({}, state, {
+                addressList: action.addressList
+            });
+        default:
+            return state;
+    }
+
+}
+
 /***
  *  使用 ES6 的对象字面量简写方式定义对象结构
  *  reducer 函数 拆分成多个单独的函数，拆分后的每个函数负责独立管理 state 的一部分

@@ -14,7 +14,7 @@ export default class AddressEditPage extends PureComponent {
     static navigationOptions = {
         //标题
         drawerLabel: '编辑地址',
-        title:'编辑地址',
+        title: '编辑地址',
         headerTitleStyle: {
             flex: 1,
             textAlign: "center",
@@ -26,9 +26,7 @@ export default class AddressEditPage extends PureComponent {
     constructor(props) {
         super(props);
 
-        this.state = {
-
-        }
+        this.state = {}
     }
 
     componentDidMount() {
@@ -41,7 +39,7 @@ export default class AddressEditPage extends PureComponent {
         return (
             <View style={[styles.container]}>
 
-                <View style={{flex:1,flexDirection:'column',marginTop:10,backgroundColor:'#ffffff'}}>
+                <View style={{flex: 1, flexDirection: 'column', marginTop: 10, backgroundColor: '#ffffff'}}>
                     <View style={[styles.add_address_view1]}>
                         <Text style={[styles.add_address_text]}>姓名</Text>
                         <TextInput style={[styles.add_address_textinput]}
@@ -79,7 +77,7 @@ export default class AddressEditPage extends PureComponent {
                 </View>
 
 
-                <View style={{flex:1,marginTop:30}}>
+                <View style={{flex: 1, marginTop: 30}}>
                     <View style={[styles.onpress_login_btn]}>
                         <Text style={[styles.unpress_login_btn_text]}>保存</Text>
                     </View>

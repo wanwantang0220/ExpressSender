@@ -13,7 +13,6 @@ export default class NaviBarView extends Component {
     };
 
 
-
     render() {
         const naviHeight = (Platform.OS === 'ios') ? 20 : 0;
         return (

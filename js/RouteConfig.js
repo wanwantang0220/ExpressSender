@@ -19,7 +19,7 @@ import ReduxIndexPage from "./page/ReduxIndexPage";
 
 const RouteConfig = {
     MainTab: {
-        screen:MainTab,
+        screen: MainTab,
     },
     // 下面三个页面我需要隐藏导航栏
     Home: {
@@ -30,37 +30,37 @@ const RouteConfig = {
         screen: MinePage,
         // navigationOptions: ({navigation}) => ({header:null, gesturesEnable:true})
     },
-    AddressList:{
-        screen:AddressListPage,
+    AddressList: {
+        screen: AddressListPage,
     },
-    ExpressList:{
-        screen:ExpressListPage,
+    ExpressList: {
+        screen: ExpressListPage,
     },
-    CouponList:{
-        screen:CouponListPage
+    CouponList: {
+        screen: CouponListPage
     },
-    Settings:{
-        screen:SettingPage
+    Settings: {
+        screen: SettingPage
     },
-    Login:{
-        screen:LoginPage,
+    Login: {
+        screen: LoginPage,
         // navigationOptions: ({navigation}) => ({header: null, gesturesEnable: true})
 
     },
-    LoginSecond:{
-        screen:LoginSecondPage
+    LoginSecond: {
+        screen: LoginSecondPage
     },
-    AddressAdd:{
-        screen:AddressAddPage
+    AddressAdd: {
+        screen: AddressAddPage
     },
-    AddressEdit:{
-        screen:AddressEditPage
+    AddressEdit: {
+        screen: AddressEditPage
     },
-    OrderDetail:{
-        screen:OrderDetailPage
+    OrderDetail: {
+        screen: OrderDetailPage
     },
-    ReduxIndex:{
-        screen:ReduxIndexPage
+    ReduxIndex: {
+        screen: ReduxIndexPage
     }
 };
 

@@ -16,7 +16,7 @@ export default class AddressListPage extends PureComponent {
     static navigationOptions = {
         //标题
         drawerLabel: '我的地址',
-        title:'我的地址',
+        title: '我的地址',
         headerTitleStyle: {
             flex: 1,
             textAlign: "center",
@@ -28,9 +28,7 @@ export default class AddressListPage extends PureComponent {
     constructor(props) {
         super(props);
 
-        this.state = {
-
-        }
+        this.state = {}
     }
 
     componentDidMount() {
@@ -44,15 +42,15 @@ export default class AddressListPage extends PureComponent {
         return (
             <View style={[styles.container]}>
                 <ScrollableTabView
-                    style={{marginTop:10}}
+                    style={{marginTop: 10}}
                     tabBarInactiveTextColor={BlackTextColor} // 没有被选中的文字颜色
                     tabBarActiveTextColor={BlackTextColor}       // 选中的文字颜色
                     tabBarBackgroundColor={White}     // 选项卡背景颜色
-                    tabBarUnderlineStyle={{backgroundColor:'#FF0000',height:1}}   //下划线的样式
+                    tabBarUnderlineStyle={{backgroundColor: '#FF0000', height: 1}}   //下划线的样式
                     initialPage={0}
                     renderTabBar={() =>
                         <ScrollableTabBar
-                            style={{height: 40,borderWidth:0,elevation:2}}
+                            style={{height: 40, borderWidth: 0, elevation: 2}}
                             tabStyle={{height: 39}}
                             underlineHeight={2}/>}>
 

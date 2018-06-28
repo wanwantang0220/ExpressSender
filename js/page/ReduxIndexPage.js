@@ -4,13 +4,13 @@ import {View} from 'react-native';
 
 export default class ReduxIndexPage extends PureComponent {
 
-    static navigationOptions ={
-        title:'Redux',
-        headerTitleStyle:{
-            flex:1,
-            textAlign:'center'
+    static navigationOptions = {
+        title: 'Redux',
+        headerTitleStyle: {
+            flex: 1,
+            textAlign: 'center'
         },
-        headerRight:<View/>
+        headerRight: <View/>
     }
 
     constructor(props) {

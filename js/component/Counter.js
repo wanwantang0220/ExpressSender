@@ -4,18 +4,18 @@ import PropTypes from 'prop-types';
 
 export default class Counter extends Component {
 
-    static propTypes={
+    static propTypes = {
         disableColor: PropTypes.string,
         timerTitle: PropTypes.string,
-        enable: PropTypes.oneOfType([PropTypes.bool,PropTypes.number])
+        enable: PropTypes.oneOfType([PropTypes.bool, PropTypes.number])
     };
 
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
-            timerCount:this.props.timerCount || 60,
-            counting:false,
-            selfEnable:true,
+        this.state = {
+            timerCount: this.props.timerCount || 60,
+            counting: false,
+            selfEnable: true,
         };
     }
 

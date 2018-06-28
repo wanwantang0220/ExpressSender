@@ -31,7 +31,7 @@ export default class SettingPage extends PureComponent {
         super(props);
 
         this.state = {
-            phone: '13115085126'
+            phone: '18961722253'
         };
 
         this.httpManager = new HttpManager();

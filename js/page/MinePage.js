@@ -35,22 +35,28 @@ export default class MinePage extends Component {
                     <Text style={[styles.mine_header_text]}>认证</Text>
                 </View>
 
-                <LinearGradient colors={[ BackgroundColorLight, White]} style={styles.lineargradient} />
+                <LinearGradient colors={[BackgroundColorLight, White]} style={styles.lineargradient}/>
                 <View style={[styles.mine_view_content]}>
-                     <View style={[styles.view_line_full]}/>
-                    <MineItem  logo={MINE_EXPRESS}  content="我的快递" onPress={()=>this.props.navigation.navigate('ExpressList')}/>
+                    <View style={[styles.view_line_full]}/>
+                    <MineItem logo={MINE_EXPRESS} content="我的快递"
+                              onPress={() => this.props.navigation.navigate('ExpressList')}/>
                     <View style={[styles.view_line]}/>
-                    <MineItem  logo={MINE_ADDRESS}  content="地址簿" onPress={()=>this.props.navigation.navigate('AddressList')}/>
+                    <MineItem logo={MINE_ADDRESS} content="地址簿"
+                              onPress={() => this.props.navigation.navigate('AddressList')}/>
                     <View style={[styles.view_line]}/>
-                    <MineItem  logo={MINE_CARD}  content="优惠券" onPress={()=>this.props.navigation.navigate('CouponList')}/>
+                    <MineItem logo={MINE_CARD} content="优惠券"
+                              onPress={() => this.props.navigation.navigate('CouponList')}/>
                     <View style={[styles.view_line]}/>
-                    <MineItem  logo={MINE_SETTING}  content="设置" onPress={()=>this.props.navigation.navigate('Settings')}/>
+                    <MineItem logo={MINE_SETTING} content="设置"
+                              onPress={() => this.props.navigation.navigate('Settings')}/>
                     <View style={[styles.view_line_full]}/>
 
-                    <MineItem  logo={MINE_SETTING}  content="测试" onPress={()=>this.props.navigation.navigate('OrderDetail')}/>
+                    <MineItem logo={MINE_SETTING} content="测试"
+                              onPress={() => this.props.navigation.navigate('OrderDetail')}/>
                     <View style={[styles.view_line_full]}/>
 
-                    <MineItem  logo={MINE_SETTING}  content="Redux" onPress={()=>this.props.navigation.navigate('ReduxIndex')}/>
+                    <MineItem logo={MINE_SETTING} content="Redux"
+                              onPress={() => this.props.navigation.navigate('ReduxIndex')}/>
                     <View style={[styles.view_line_full]}/>
                 </View>
             </View>

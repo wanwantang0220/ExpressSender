@@ -80,15 +80,15 @@ export default class ExpressSignPage extends PureComponent {
      */
     requestRefreshData(isrefresh, isloadmore) {
         if (isrefresh) {
-            let startpage=1 , mdata=[];
+            let startpage = 1, mdata = [];
             this.setState({
                 mData: mdata,
                 startPage: startpage
             });
             this.setState({title: 'React'});
 
-            this.state.mData=[];
-            this.state.startPage=1;
+            this.state.mData = [];
+            this.state.startPage = 1;
         }
 
         let params = {

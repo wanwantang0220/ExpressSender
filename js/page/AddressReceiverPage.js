@@ -19,8 +19,7 @@ export default class AddressReceiverPage extends PureComponent {
     };
 
 
-    static propTypes={
-    };
+    static propTypes = {};
 
     constructor(props) {
         super(props);
@@ -28,7 +27,7 @@ export default class AddressReceiverPage extends PureComponent {
             mData: [],
             startPage: 1,   // 从第几页开始加载
             pageSize: 6,   // 每页加载多少条数据
-            isEmpty:true,
+            isEmpty: true,
         };
         this.httpManager = new HttpManager();
 
@@ -41,40 +40,43 @@ export default class AddressReceiverPage extends PureComponent {
     render() {
 
         const navigator = this.props.navigator;
-        const flag = this.state.isEmpty?<AddressContent
-                onAddAddress={()=>{navigator.navigate('AddressAdd')} }/>
-            :<AddressItemCell/>;
+        const flag = this.state.isEmpty ? <AddressContent
+                onAddAddress={() => {
+                    navigator.navigate('AddressAdd')
+                }}/>
+            : <AddressItemCell/>;
 
         return (
             <View style={[styles.mainContainer]}>
 
-                <View style={{marginTop:100,  justifyContent:'center',
-                    alignItems:'center',}}>
+                <View style={{
+                    marginTop: 100, justifyContent: 'center',
+                    alignItems: 'center',
+                }}>
                     {flag}
                 </View>
 
                 {/*<RefreshListView*/}
-                    {/*ref={(ref) => {*/}
-                        {/*this.listView = ref*/}
-                    {/*}}*/}
-                    {/*colors={['red', '#ffd500', '#0080ff', '#99e600']}*/}
-                    {/*data={this.state.mData}*/}
-                    {/*renderItem={this.renderItem}*/}
-                    {/*keyExtractor={(item) => {*/}
-                        {/*return item._id || item.uuid;*/}
-                    {/*}}*/}
-                    {/*ListEmptyComponent={this.renderEmptyView}*/}
-                    {/*onHeaderRefresh={() => {*/}
-                        {/*this.requestRefreshData(true, false)*/}
-                    {/*}}*/}
-                    {/*onFooterRefresh={() => {*/}
-                        {/*this.requestRefreshData(false, true)*/}
-                    {/*}}>*/}
+                {/*ref={(ref) => {*/}
+                {/*this.listView = ref*/}
+                {/*}}*/}
+                {/*colors={['red', '#ffd500', '#0080ff', '#99e600']}*/}
+                {/*data={this.state.mData}*/}
+                {/*renderItem={this.renderItem}*/}
+                {/*keyExtractor={(item) => {*/}
+                {/*return item._id || item.uuid;*/}
+                {/*}}*/}
+                {/*ListEmptyComponent={this.renderEmptyView}*/}
+                {/*onHeaderRefresh={() => {*/}
+                {/*this.requestRefreshData(true, false)*/}
+                {/*}}*/}
+                {/*onFooterRefresh={() => {*/}
+                {/*this.requestRefreshData(false, true)*/}
+                {/*}}>*/}
                 {/*</RefreshListView>*/}
             </View>
         )
     }
-
 
 
     /// 渲染一个空白页，当列表无数据的时候显示。这里简单写成一个View控件
@@ -97,21 +99,21 @@ export default class AddressReceiverPage extends PureComponent {
      */
     requestRefreshData(isrefresh, isloadmore) {
         if (isrefresh) {
-            let startpage=1 , mdata=[];
+            let startpage = 1, mdata = [];
             this.setState({
                 mData: mdata,
                 startPage: startpage
             });
             this.setState({title: 'React'});
 
-            this.state.mData=[];
-            this.state.startPage=1;
+            this.state.mData = [];
+            this.state.startPage = 1;
         }
 
         let params = {
             "addUserPhone": "18961812572",
-            "addUserType": "2" ,
-            "addrType":"2"
+            "addUserType": "2",
+            "addrType": "2"
         };
         let object2 = {
             "object": params,
