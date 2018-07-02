@@ -160,28 +160,24 @@ class AddressAddPage extends PureComponent {
         const userName = storage.load('userName');
         const params = {
             "object": {
-                "name": this.state.addressName,
-                "phone": this.state.addressPhone,
-                "addrDetail": this.state.addressDetail,
+                "name": "测试数据1",//this.state.addressName,
+                "phone": "18961722253",// this.state.addressPhone,
+                "addrDetail": "菱湖大道",//this.state.addressDetail,
                 "proviceCityRegionTxt": "江苏省-无锡市-新吴区",// this.state.proviceCityRegionTxt,
-                "addrType": this.state.addrType,
+                "addrType": "1",//this.state.addrType,
                 "longitude": "120.30 ",//this.state.longitude,
                 "latitude": "31.57",//this.state.latitude,
                 "addUserType": "1",
-                "addUserName": "陈平",
-                "addUserPhone": userName,
+                "addUserName": "汤弯弯",
+                "addUserPhone": "18961722253",//userName,
                 "active": "1"
             }
-        }
+        };
 
 
         this.httpManager.addAddress(params, (response) => {
-            if (response.errCode === RESULT_OK) {
                 alert("地址添加成功");
                 this.props.navigation.pop();
-            } else {
-
-            }
         })
 
 

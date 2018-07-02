@@ -1,6 +1,8 @@
 import {Nuknown_Error, NetWork_Request_Error, ErrorAnayle} from './ErrorAnayle'
 import ErrorBean from "./ErrorBean";
 import JsonUtil from "./JsonUtil";
+import {storage} from '../storeage/Storage';
+
 import {
     ADDRESS_CREATE, ADDRESS_RETRIEVE_APP, ADDRESS_UPDATE, CREATE_VERIFICATION_CODE, LOGIN_REGISTER, MY_EXPRESS_LIST,
     RESULT_OK
@@ -110,7 +112,7 @@ export default class HttpManager {
                 .then((data) => {
                     if (data != null) {
                         if (data.errCode === RESULT_OK) {
-                            callback(data.object);
+                            callback(data);
                         } else if (data.errDesc != null && data.errDesc != "") {
                             reject(ErrorAnayle.getErrorMsg(data.errDesc))
                         } else {
@@ -213,9 +215,7 @@ export default class HttpManager {
     /*请求数据=本地加网络*/
     postNetData(url, data) {
         //获取存储Token
-        let cookie = storage.load({
-            key: 'cookie'
-        });
+        // let cookie = storage.load('cookie');
 
         let header = {
             method: 'POST',
@@ -225,9 +225,9 @@ export default class HttpManager {
             },
             body: JsonUtil.jsonToStr(data)
         };
-        if (cookie.length) {
-            header['Authorization'] = 'Bearer ' + cookie
-        }
+        // if (cookie.length) {
+        //     header['Authorization'] = 'Bearer ' + cookie
+        // }
 
         return new Promise((resolve, reject) => {
             fetch(url, header)
