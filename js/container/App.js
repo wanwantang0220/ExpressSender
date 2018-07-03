@@ -16,20 +16,22 @@ import ReduxIndexPage from "../page/ReduxIndexPage";
 import AddressListPage from "../page/AddressListPage";
 import CouponListPage from "../page/CouponListPage";
 import LoginPage from "../page/LoginPage";
+import HomePage from "../page/HomePage";
+import MinePage feStackrom "../page/MinePage";
 
-const App = createStackNavigator({
+const App = creatNavigator({
     MainTab: {
         screen: MainTab,
     },
     // // 下面三个页面我需要隐藏导航栏
-    // Home: {
-    //     screen: HomePage,
-    //     // navigationOptions: ({navigation}) => ({header: null, gesturesEnable: true})
-    // },
-    // Mine: {
-    //     screen: MinePage,
-    //     // navigationOptions: ({navigation}) => ({header:null, gesturesEnable:true})
-    // },
+    Home: {
+        screen: HomePage,
+        // navigationOptions: ({navigation}) => ({header: null, gesturesEnable: true})
+    },
+    Mine: {
+        screen: MinePage,
+        // navigationOptions: ({navigation}) => ({header:null, gesturesEnable:true})
+    },
     AddressList: {
         screen: AddressListPage,
     },

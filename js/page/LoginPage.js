@@ -7,12 +7,14 @@ import {Text, TextInput, TouchableHighlight, TouchableOpacity, View} from "react
 import styles from "../style/Css";
 import {ColorLineRed} from "../style/BaseStyle";
 import HttpManager from "../data/http/HttpManager";
-
+import {connect} from "react-redux";
+import {NavigationActions ,StackActions} from 'react-navigation';
+import * as verCodeAction from "../actions/verCodeAction";
 
 const BgUnOnPress = styles.unpress_login_btn;
 const BgOnPress = styles.onpress_login_btn;
 
-export default class SettingPage extends PureComponent {
+class LoginPage extends PureComponent {
 
     static navigationOptions = {
         //标题
@@ -40,9 +42,33 @@ export default class SettingPage extends PureComponent {
     componentDidMount() {
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+
+        // 登录完成,切成功登录
+        if (nextProps.status === 'success' && nextProps.isSuccess) {
+            const resetAction = StackActions.reset({
+                index: 0,
+                actions: [
+                    NavigationActions.navigate({routeName: 'LoginSecond', params: {phone:this.state.phone}})
+                ]
+            });
+            console.log("result","发送成功");
+            this.props.navigation.dispatch(resetAction);
+            return false;
+        }
+        return true;
+    }
+
+
+    componentWillUnmount() {
+
+    }
+
     render() {
 
+        console.log('debug', 'login---- render');
         const btnBg = this.state.phone === "" ? BgUnOnPress : BgOnPress;
+
 
         return (
             <View style={[styles.mainContainer]}>
@@ -80,25 +106,35 @@ export default class SettingPage extends PureComponent {
     getVerCode = () => {
         let mobile = this.state.phone;
         let isTrueMobile;
+        const {verCode} = this.props;
 
-        if(mobile.length===11){
+        if (mobile.length === 11) {
             isTrueMobile = true;
-        }else{
-            isTrueMobile=false;
+        } else {
+            isTrueMobile = false;
         }
 
         let params = {
             "object": this.state.phone,
         };
 
-        this.httpManager.getVeriCode(params, (response) => {
-            console.log("response.object", response.object);
-            if (response.errCode === "000000") {
-                alert("发送成功");
-                this.props.navigation.navigate('LoginSecond', {param: this.state.phone})
-            }
-        });
+
+        verCode(params);
 
     }
 }
+
+
+const mapStateToProps = (state) => ({
+    status: state.verCode.status,
+    isSuccess: state.verCode.isSuccess,
+    object: state.verCode.object,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    verCode: param => dispatch(verCodeAction.verCode(param)),
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage)
 

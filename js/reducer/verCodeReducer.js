@@ -1,13 +1,14 @@
-'use strict';
-import * as types from '../constants/ActionType';
+import * as types from "../constants/ActionType";
 
-const initialState = {
+
+const initialState={
     status:"...",
     isSuccess: false,
     object: null,
 };
 
-export default function loginIn(state=initialState, action) {
+
+export default function verCode(state = initialState ,action) {
     switch (action.type){
         case types.LOGIN_IN_DOING:
             return {
@@ -37,4 +38,5 @@ export default function loginIn(state=initialState, action) {
             console.log(state);
             return state;
     }
+
 }

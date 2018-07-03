@@ -10,12 +10,15 @@ import TimerButton from "../component/TimerButton";
 import HttpManager from "../data/http/HttpManager";
 import {storage} from '../data/storeage/Storage';
 import {RESULT_OK} from "../data/http/ContastURL";
+import {connect} from "react-redux";
+import * as loginAction from "../actions/loginAction";
+import {StackActions, NavigationActions} from "react-navigation";
 
 
 const BgUnOnPress = styles.unpress_login_btn;
 const BgOnPress = styles.onpress_login_btn;
 
-export default class LoginSecondPage extends PureComponent {
+class LoginSecondPage extends PureComponent {
 
     static navigationOptions = {
         //标题
@@ -42,14 +45,30 @@ export default class LoginSecondPage extends PureComponent {
     }
 
     componentDidMount() {
+    }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if (nextProps.status === 'success' && nextProps.isSuccess) {
+            const resetAction = StackActions.reset({
+                index: 0,
+                actions: [
+                    NavigationActions.navigate({routerName: 'MainTab'})
+                ]
+            });
+            console.log("status", nextProps.status);
+            this.props.navigation.dispatch(resetAction);
+            return false;
+        } else {
+            console.log("status", nextProps.status);
+        }
+        return true;
     }
 
 
     render() {
 
-        const {params} = this.props.navigation.state;
-        const phone = params ? params.param : null;
+        const {phone} = this.props.navigation.state.params;
+        const cur_phone = phone ? phone : '';
         const btnBg = this.state.vercode === "" ? BgUnOnPress : BgOnPress;
 
         return (
@@ -61,7 +80,7 @@ export default class LoginSecondPage extends PureComponent {
                         <Text style={[styles.login_second_text]}>{phone}</Text>
                         <TimerButton
                             style={styles.login_second_time}
-                            enable={phone.length}
+                            enable={cur_phone.length}
                             textStyle={{color: 'blue'}}
                             timerCount={30}
                             timerActiveTitle={['请在（', 's）后重试']}
@@ -110,34 +129,36 @@ export default class LoginSecondPage extends PureComponent {
 
     loginOrReg = () => {
 
-        const {params} = this.props.navigation.state;
-        const phone = params ? params.param : null;
+        const {phone} = this.props.navigation.state.params;
+        const cur_phone = phone ? phone : '';
+
+
+        const {loginIn} = this.props;
 
         let netParams = {
             "object": {
-                "telephone": phone,
+                "telephone": cur_phone,
                 "vercode": this.state.vercode,
             }
         };
 
         console.log("telephone : " + phone + '---vercode : ' + this.state.vercode);
 
-        this.httpManager.loginOrReg(netParams, (response) => {
-            if (response.errCode === RESULT_OK) {
-                alert("验证成功");
-                let authUser = response.object.authUser;
-                let staffInfo = response.object.staffInfo;
-                storage.save('userName', authUser.userName);
-                storage.save('userId', authUser.userId);
-                storage.save('staffInfo', staffInfo);
-                //存储用户Token
-                storage.save('cookie', 'SESSION=' + response.object.sessionId + ';SSOTOKEN=' + response.object.ssoToken);
+        loginIn(netParams);
 
-                this.props.navigation.navigate('MainTab');
-            } else {
-                //TODO 异常处理
-            }
-        })
     }
 }
+
+const mapStateToProps = (state) => ({
+    status: state.loginIn.status,
+    isSuccess: state.loginIn.isSuccess,
+    object: state.loginIn.object,
+});
+
+
+const mapDispatchToProps = (dispatch) => ({
+    loginIn: param => dispatch(loginAction.login(param))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginSecondPage)
 
